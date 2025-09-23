@@ -22,73 +22,75 @@ $stats = $db->getStats();
 ?>
 
 <!-- Hero Section -->
-<section class="hero-section">
-    <div class="container mx-auto px-6 relative z-10">
-        <div class="flex items-center justify-between flex-col lg:flex-row">
-            <!-- Hero Content -->
-            <div class="lg:w-1/2 animate-fadeInLeft">
-                <h1 class="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <!-- Hero Text -->
+            <div class="hero-text">
+                <h1 class="hero-title">
                     <?php echo SITE_NAME; ?>
                 </h1>
-                <p class="text-xl text-white/90 mb-8 leading-relaxed">
+                <p class="hero-subtitle">
                     Experience professional healthcare and diabetes treatment from expert medical professionals in the heart of Pokhara.
                 </p>
                 
-                <div class="flex flex-col sm:flex-row gap-4 mb-8">
-                    <a href="pages/contact.php" class="btn-primary text-lg px-8 py-4">
-                        <i class="fas fa-calendar-check mr-2"></i>
+                <div class="hero-buttons">
+                    <a href="pages/contact.php" class="btn btn-primary btn-lg">
+                        <i class="fas fa-calendar-check"></i>
                         Book Appointment
                     </a>
-                    <a href="tel:<?php echo CLINIC_PHONE; ?>" class="btn-secondary text-lg px-8 py-4 bg-white/10 border-white text-white hover:bg-white hover:text-blue-600">
-                        <i class="fas fa-phone mr-2"></i>
+                    <a href="tel:<?php echo CLINIC_PHONE; ?>" class="btn btn-outline btn-lg hero-call-btn">
+                        <i class="fas fa-phone"></i>
                         Call Now
                     </a>
                 </div>
                 
                 <!-- Quick Info -->
-                <div class="flex flex-col sm:flex-row gap-6 text-white/80">
-                    <div class="flex items-center">
-                        <i class="fas fa-clock mr-2 text-blue-300"></i>
+                <div class="hero-info">
+                    <div class="hero-info-item">
+                        <i class="fas fa-clock"></i>
                         <span><?php echo CLINIC_HOURS; ?></span>
                     </div>
-                    <div class="flex items-center">
-                        <i class="fas fa-map-marker-alt mr-2 text-blue-300"></i>
+                    <div class="hero-info-item">
+                        <i class="fas fa-map-marker-alt"></i>
                         <span>Pokhara, Kaski</span>
                     </div>
                 </div>
             </div>
             
             <!-- Hero Image -->
-            <div class="lg:w-1/2 mt-12 lg:mt-0 animate-fadeInRight">
+            <div class="hero-image">
                 <img src="assets/images/hero-main.webp" 
                      alt="Karuna Clinic Healthcare" 
-                     class="w-full h-auto rounded-2xl shadow-2xl animate-float">
+                     class="hero-img">
             </div>
         </div>
     </div>
 </section>
 
 <!-- Services Section -->
-<section class="py-20 bg-gray-50 dark:bg-gray-800" id="services">
-    <div class="container mx-auto px-6">
-        <div class="text-center mb-16 animate-on-scroll">
-            <h2 class="text-4xl font-bold mb-4 text-gray-800 dark:text-white">
-                <i class="fas fa-stethoscope text-blue-600 mr-3"></i>
+<section class="section section-alt" id="services">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">
+                <i class="fas fa-stethoscope"></i>
                 Our Medical Services
             </h2>
-            <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p class="section-subtitle">
                 Comprehensive healthcare services with modern facilities and experienced medical professionals
             </p>
         </div>
         
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="services-grid">
             <?php foreach (array_slice($services, 0, 4) as $service): ?>
-            <div class="service-card animate-on-scroll">
-                <i class="<?php echo htmlspecialchars($service['icon']); ?> service-icon"></i>
-                <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="<?php echo htmlspecialchars($service['icon']); ?>"></i>
+                </div>
+                <h3 class="card-title">
                     <?php echo htmlspecialchars($service['name']); ?>
                 </h3>
-                <p class="text-gray-600 dark:text-gray-300">
+                <p class="card-content">
                     <?php echo htmlspecialchars($service['description']); ?>
                 </p>
             </div>
@@ -96,12 +98,12 @@ $stats = $db->getStats();
         </div>
         
         <!-- Additional Services -->
-        <div class="mt-16 text-center animate-on-scroll">
-            <h3 class="text-2xl font-bold mb-8 text-gray-800 dark:text-white">Specialized Care</h3>
-            <div class="flex flex-wrap justify-center gap-4">
+        <div class="additional-services">
+            <h3 class="additional-services-title">Specialized Care</h3>
+            <div class="service-tags">
                 <?php foreach (array_slice($services, 4) as $service): ?>
-                <span class="px-6 py-3 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full">
-                    <i class="<?php echo htmlspecialchars($service['icon']); ?> mr-2"></i>
+                <span class="service-tag">
+                    <i class="<?php echo htmlspecialchars($service['icon']); ?>"></i>
                     <?php echo htmlspecialchars($service['name']); ?>
                 </span>
                 <?php endforeach; ?>
@@ -109,23 +111,23 @@ $stats = $db->getStats();
         </div>
         
         <!-- Statistics -->
-        <div class="mt-16 animate-on-scroll">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div class="stats-card p-6 rounded-lg shadow-lg">
-                    <div class="text-3xl font-bold text-blue-600 mb-2"><?php echo $stats['services']; ?></div>
-                    <div class="text-gray-600 dark:text-gray-300">Services</div>
+        <div class="stats-section">
+            <div class="stats-grid">
+                <div class="stats-card">
+                    <div class="stats-number stats-blue"><?php echo $stats['services']; ?></div>
+                    <div class="stats-label">Services</div>
                 </div>
-                <div class="stats-card p-6 rounded-lg shadow-lg">
-                    <div class="text-3xl font-bold text-green-600 mb-2"><?php echo $stats['doctors']; ?></div>
-                    <div class="text-gray-600 dark:text-gray-300">Expert Doctors</div>
+                <div class="stats-card">
+                    <div class="stats-number stats-green"><?php echo $stats['doctors']; ?></div>
+                    <div class="stats-label">Expert Doctors</div>
                 </div>
-                <div class="stats-card p-6 rounded-lg shadow-lg">
-                    <div class="text-3xl font-bold text-purple-600 mb-2"><?php echo $stats['appointments']; ?></div>
-                    <div class="text-gray-600 dark:text-gray-300">Appointments</div>
+                <div class="stats-card">
+                    <div class="stats-number stats-purple"><?php echo $stats['appointments']; ?></div>
+                    <div class="stats-label">Appointments</div>
                 </div>
-                <div class="stats-card p-6 rounded-lg shadow-lg">
-                    <div class="text-3xl font-bold text-orange-600 mb-2">24/7</div>
-                    <div class="text-gray-600 dark:text-gray-300">Emergency Care</div>
+                <div class="stats-card">
+                    <div class="stats-number stats-orange">24/7</div>
+                    <div class="stats-label">Emergency Care</div>
                 </div>
             </div>
         </div>
@@ -133,49 +135,49 @@ $stats = $db->getStats();
 </section>
 
 <!-- About Section -->
-<section class="py-20" id="about">
-    <div class="container mx-auto px-6">
-        <div class="flex flex-col lg:flex-row items-center gap-12">
+<section class="section" id="about">
+    <div class="container">
+        <div class="about-content">
             <!-- About Image -->
-            <div class="lg:w-1/2 animate-on-scroll">
+            <div class="about-image">
                 <img src="assets/images/site1.jpg" 
                      alt="About Karuna Clinic" 
-                     class="w-full h-auto rounded-2xl shadow-lg">
+                     class="about-img">
             </div>
             
             <!-- About Content -->
-            <div class="lg:w-1/2 animate-on-scroll">
-                <h2 class="text-4xl font-bold mb-6 text-gray-800 dark:text-white">
+            <div class="about-text">
+                <h2 class="about-title">
                     About <?php echo SITE_NAME; ?>
                 </h2>
-                <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                <p class="about-description">
                     We provide comprehensive healthcare services focusing on diabetes management, orthopedic problems, 
                     and general medical care. Our experienced team of medical professionals is dedicated to providing 
                     quality healthcare services at affordable prices.
                 </p>
                 
                 <!-- Key Features -->
-                <div class="space-y-4 mb-8">
-                    <div class="flex items-center">
-                        <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                        <span class="text-gray-700 dark:text-gray-300">Expert Medical Professionals</span>
+                <div class="about-features">
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle feature-icon"></i>
+                        <span class="feature-text">Expert Medical Professionals</span>
                     </div>
-                    <div class="flex items-center">
-                        <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                        <span class="text-gray-700 dark:text-gray-300">Modern Medical Equipment</span>
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle feature-icon"></i>
+                        <span class="feature-text">Modern Medical Equipment</span>
                     </div>
-                    <div class="flex items-center">
-                        <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                        <span class="text-gray-700 dark:text-gray-300">Affordable Healthcare</span>
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle feature-icon"></i>
+                        <span class="feature-text">Affordable Healthcare</span>
                     </div>
-                    <div class="flex items-center">
-                        <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                        <span class="text-gray-700 dark:text-gray-300">24/7 Emergency Support</span>
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle feature-icon"></i>
+                        <span class="feature-text">24/7 Emergency Support</span>
                     </div>
                 </div>
                 
-                <a href="pages/about.php" class="btn-primary">
-                    <i class="fas fa-info-circle mr-2"></i>
+                <a href="pages/about.php" class="btn btn-primary">
+                    <i class="fas fa-info-circle"></i>
                     Learn More About Us
                 </a>
             </div>
@@ -184,19 +186,19 @@ $stats = $db->getStats();
 </section>
 
 <!-- Doctors Section -->
-<section class="py-20 bg-gray-50 dark:bg-gray-800" id="doctors">
-    <div class="container mx-auto px-6">
-        <div class="text-center mb-16 animate-on-scroll">
-            <h2 class="text-4xl font-bold mb-4 text-gray-800 dark:text-white">
-                <i class="fas fa-user-md text-blue-600 mr-3"></i>
+<section class="section section-alt" id="doctors">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">
+                <i class="fas fa-user-md"></i>
                 Our Medical Team
             </h2>
-            <p class="text-xl text-gray-600 dark:text-gray-300">
+            <p class="section-subtitle">
                 Experienced and qualified medical professionals dedicated to your health
             </p>
         </div>
         
-        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div class="doctors-grid">
             <?php foreach ($doctors as $doctor): 
                 $schedule = json_decode($doctor['schedule'], true);
                 $workingDays = [];
@@ -207,22 +209,24 @@ $stats = $db->getStats();
                 }
                 $scheduleText = !empty($workingDays) ? implode('-', array_slice($workingDays, 0, 2)) : 'Available';
             ?>
-            <div class="doctor-card animate-on-scroll">
-                <img src="assets/images/<?php echo htmlspecialchars($doctor['image']); ?>" 
-                     alt="<?php echo htmlspecialchars($doctor['name']); ?>" 
-                     class="doctor-image">
-                <div class="p-6">
-                    <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">
+            <div class="doctor-card">
+                <div class="doctor-image-container">
+                    <img src="assets/images/<?php echo htmlspecialchars($doctor['image']); ?>" 
+                         alt="<?php echo htmlspecialchars($doctor['name']); ?>" 
+                         class="doctor-image">
+                </div>
+                <div class="doctor-info">
+                    <h3 class="doctor-name">
                         <?php echo htmlspecialchars($doctor['name']); ?>
                     </h3>
-                    <p class="text-blue-600 dark:text-blue-400 font-semibold mb-3">
+                    <p class="doctor-specialization">
                         <?php echo htmlspecialchars($doctor['specialization']); ?>
                     </p>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                    <p class="doctor-bio">
                         <?php echo htmlspecialchars($doctor['bio']); ?>
                     </p>
-                    <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                        <i class="fas fa-calendar mr-2"></i>
+                    <div class="doctor-schedule">
+                        <i class="fas fa-calendar"></i>
                         Available: <?php echo $scheduleText; ?>
                     </div>
                 </div>
@@ -230,9 +234,9 @@ $stats = $db->getStats();
             <?php endforeach; ?>
         </div>
         
-        <div class="text-center mt-12 animate-on-scroll">
-            <a href="pages/doctors.php" class="btn-primary">
-                <i class="fas fa-users mr-2"></i>
+        <div class="section-cta">
+            <a href="pages/doctors.php" class="btn btn-primary">
+                <i class="fas fa-users"></i>
                 View All Doctors
             </a>
         </div>
@@ -240,23 +244,23 @@ $stats = $db->getStats();
 </section>
 
 <!-- Contact CTA Section -->
-<section class="py-20 bg-blue-600 text-white">
-    <div class="container mx-auto px-6 text-center">
-        <div class="max-w-3xl mx-auto animate-on-scroll">
-            <h2 class="text-4xl font-bold mb-6">
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2 class="cta-title">
                 Ready to Take Care of Your Health?
             </h2>
-            <p class="text-xl mb-8 text-blue-100">
+            <p class="cta-subtitle">
                 Book an appointment today and experience quality healthcare from our expert medical team.
             </p>
             
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="pages/contact.php" class="btn-primary bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-4">
-                    <i class="fas fa-calendar-check mr-2"></i>
+            <div class="cta-buttons">
+                <a href="pages/contact.php" class="btn btn-white">
+                    <i class="fas fa-calendar-check"></i>
                     Book Appointment
                 </a>
-                <a href="tel:<?php echo CLINIC_PHONE; ?>" class="btn-secondary border-white text-white hover:bg-white hover:text-blue-600 text-lg px-8 py-4">
-                    <i class="fas fa-phone mr-2"></i>
+                <a href="tel:<?php echo CLINIC_PHONE; ?>" class="btn btn-outline-white">
+                    <i class="fas fa-phone"></i>
                     <?php echo formatPhone(CLINIC_PHONE); ?>
                 </a>
             </div>
