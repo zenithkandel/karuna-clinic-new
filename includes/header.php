@@ -32,37 +32,10 @@ $currentTheme = getTheme();
     <!-- Tailwind CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
     
-    <!-- Custom CSS for animations and themes -->
-    <style>
-        :root[data-theme="light"] {
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8fafc;
-            --text-primary: #1f2937;
-            --text-secondary: #6b7280;
-            --accent-primary: #3b82f6;
-            --accent-hover: #2563eb;
-            --border-color: #e5e7eb;
-        }
-        
-        :root[data-theme="dark"] {
-            --bg-primary: #1f2937;
-            --bg-secondary: #111827;
-            --text-primary: #f9fafb;
-            --text-secondary: #d1d5db;
-            --accent-primary: #60a5fa;
-            --accent-hover: #3b82f6;
-            --border-color: #374151;
-        }
-        
-        * {
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-        }
-        
-        body {
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-        }
-    </style>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Theme Toggle Button (Fixed) -->
@@ -71,7 +44,7 @@ $currentTheme = getTheme();
     </button>
 
     <!-- Navigation -->
-    <nav class="bg-white dark:bg-gray-900 shadow-md fixed w-full top-0 z-40 transition-all duration-300">
+    <nav class="nav-bar shadow-md fixed w-full top-0 z-40 transition-all duration-300" style="background-color: var(--bg-primary); border-bottom: 1px solid var(--border-color);">
         <div class="container mx-auto px-6 py-3">
             <div class="flex items-center justify-between">
                 <!-- Logo -->
@@ -84,19 +57,19 @@ $currentTheme = getTheme();
 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="<?php echo SITE_URL; ?>" class="nav-link <?php echo isActive('index'); ?> text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors duration-300">
+                    <a href="<?php echo SITE_URL; ?>" class="nav-link <?php echo isActive('index'); ?>" style="color: var(--text-secondary);">
                         <i class="fas fa-home mr-2"></i>Home
                     </a>
-                    <a href="<?php echo SITE_URL; ?>pages/about.php" class="nav-link <?php echo isActive('about'); ?> text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors duration-300">
+                    <a href="<?php echo SITE_URL; ?>pages/about.php" class="nav-link <?php echo isActive('about'); ?>" style="color: var(--text-secondary);">
                         <i class="fas fa-info-circle mr-2"></i>About
                     </a>
-                    <a href="<?php echo SITE_URL; ?>pages/services.php" class="nav-link <?php echo isActive('services'); ?> text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors duration-300">
+                    <a href="<?php echo SITE_URL; ?>pages/services.php" class="nav-link <?php echo isActive('services'); ?>" style="color: var(--text-secondary);">
                         <i class="fas fa-stethoscope mr-2"></i>Services
                     </a>
-                    <a href="<?php echo SITE_URL; ?>pages/doctors.php" class="nav-link <?php echo isActive('doctors'); ?> text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors duration-300">
+                    <a href="<?php echo SITE_URL; ?>pages/doctors.php" class="nav-link <?php echo isActive('doctors'); ?>" style="color: var(--text-secondary);">
                         <i class="fas fa-user-md mr-2"></i>Doctors
                     </a>
-                    <a href="<?php echo SITE_URL; ?>pages/contact.php" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-300">
+                    <a href="<?php echo SITE_URL; ?>pages/contact.php" class="btn-primary">
                         <i class="fas fa-phone mr-2"></i>Contact
                     </a>
                 </div>
@@ -131,4 +104,4 @@ $currentTheme = getTheme();
     </nav>
 
     <!-- Main Content (with top margin for fixed nav) -->
-    <main class="pt-20">
+    <main class="pt-20 page-transition">

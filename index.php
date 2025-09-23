@@ -111,19 +111,19 @@ $stats = $db->getStats();
         <!-- Statistics -->
         <div class="mt-16 animate-on-scroll">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg">
+                <div class="stats-card p-6 rounded-lg shadow-lg">
                     <div class="text-3xl font-bold text-blue-600 mb-2"><?php echo $stats['services']; ?></div>
                     <div class="text-gray-600 dark:text-gray-300">Services</div>
                 </div>
-                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg">
+                <div class="stats-card p-6 rounded-lg shadow-lg">
                     <div class="text-3xl font-bold text-green-600 mb-2"><?php echo $stats['doctors']; ?></div>
                     <div class="text-gray-600 dark:text-gray-300">Expert Doctors</div>
                 </div>
-                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg">
+                <div class="stats-card p-6 rounded-lg shadow-lg">
                     <div class="text-3xl font-bold text-purple-600 mb-2"><?php echo $stats['appointments']; ?></div>
                     <div class="text-gray-600 dark:text-gray-300">Appointments</div>
                 </div>
-                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg">
+                <div class="stats-card p-6 rounded-lg shadow-lg">
                     <div class="text-3xl font-bold text-orange-600 mb-2">24/7</div>
                     <div class="text-gray-600 dark:text-gray-300">Emergency Care</div>
                 </div>
