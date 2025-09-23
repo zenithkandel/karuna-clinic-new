@@ -258,6 +258,14 @@ p {
     box-shadow: var(--shadow-lg);
 }
 
+.doctor-profile-card {
+    transition: all 0.3s ease;
+}
+
+.doctor-profile-card:hover {
+    transform: translateY(-2px);
+}
+
 /* Animations */
 @keyframes fadeInUp {
     from {
