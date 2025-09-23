@@ -4,6 +4,7 @@
     <footer class="site-footer">
         <div class="footer-top">
             <div class="container">
+                <div class="accent-ring" aria-hidden="true"></div>
                 <div class="footer-grid">
                     <!-- Brand / About -->
                     <div class="footer-col footer-brand">
@@ -49,6 +50,12 @@
                             <li><a class="footer-link" href="<?php echo SITE_URL; ?>pages/contact.php"><i class="fas fa-chevron-right"></i> <span>Book Appointment</span></a></li>
                             <li><a class="footer-link" href="<?php echo SITE_URL; ?>pages/about.php"><i class="fas fa-chevron-right"></i> <span>About Us</span></a></li>
                         </ul>
+                        <div class="footer-newsletter">
+                            <form action="#" method="post" onsubmit="event.preventDefault();alert('Demo only');">
+                                <input type="email" name="newsletter_email" placeholder="Email for updates" aria-label="Email address" required>
+                                <button class="btn btn-primary" type="submit">Subscribe</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
