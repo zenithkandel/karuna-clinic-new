@@ -181,49 +181,37 @@ $stats = $db->getStats();
         </div>
         
         <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <!-- Doctor 1 -->
+            <?php foreach ($doctors as $doctor): 
+                $schedule = json_decode($doctor['schedule'], true);
+                $workingDays = [];
+                foreach ($schedule as $day => $hours) {
+                    if ($hours !== 'closed') {
+                        $workingDays[] = ucfirst($day);
+                    }
+                }
+                $scheduleText = !empty($workingDays) ? implode('-', array_slice($workingDays, 0, 2)) : 'Available';
+            ?>
             <div class="doctor-card animate-on-scroll">
-                <img src="assets/images/ishwar.png" 
-                     alt="Prof. Dr. Ishwar Sharma" 
+                <img src="assets/images/<?php echo htmlspecialchars($doctor['image']); ?>" 
+                     alt="<?php echo htmlspecialchars($doctor['name']); ?>" 
                      class="doctor-image">
                 <div class="p-6">
                     <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">
-                        Prof. Dr. Ishwar Sharma
+                        <?php echo htmlspecialchars($doctor['name']); ?>
                     </h3>
                     <p class="text-blue-600 dark:text-blue-400 font-semibold mb-3">
-                        Professor of Orthopaedic and Trauma Surgery
+                        <?php echo htmlspecialchars($doctor['specialization']); ?>
                     </p>
                     <p class="text-gray-600 dark:text-gray-300 mb-4">
-                        Specialist in orthopedic treatment, trauma surgery, and sports medicine with years of experience.
+                        <?php echo htmlspecialchars($doctor['bio']); ?>
                     </p>
                     <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
                         <i class="fas fa-calendar mr-2"></i>
-                        Available: Mon-Fri, 9:00 AM - 5:00 PM
+                        Available: <?php echo $scheduleText; ?>
                     </div>
                 </div>
             </div>
-            
-            <!-- Doctor 2 -->
-            <div class="doctor-card animate-on-scroll">
-                <img src="assets/images/karuna.png" 
-                     alt="Prof. Dr. Karuna Acharya" 
-                     class="doctor-image">
-                <div class="p-6">
-                    <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">
-                        Prof. Dr. Karuna Acharya
-                    </h3>
-                    <p class="text-blue-600 dark:text-blue-400 font-semibold mb-3">
-                        Professor Doctor at Gandaki Medical College
-                    </p>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">
-                        Expert in diabetes care, general medicine, and preventive healthcare with extensive experience.
-                    </p>
-                    <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                        <i class="fas fa-calendar mr-2"></i>
-                        Available: Tue-Sat, 10:00 AM - 6:00 PM
-                    </div>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
         
         <div class="text-center mt-12 animate-on-scroll">
