@@ -1,71 +1,68 @@
 /**
- * Karuna Swasthya Clinic - JavaScript
- * Interactive functionality and animations
+ * Karuna Swasthya Clinic - Modern JavaScript
+ * Clean implementation with proper theme switching
  */
 
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all functions
     initThemeToggle();
     initMobileMenu();
-    initBackToTop();
-    initAnimations();
+    initScrollAnimations();
     initSmoothScroll();
     
-    console.log('Karuna Clinic website initialized successfully!');
+    console.log('🏥 Karuna Clinic website initialized successfully!');
 });
 
 /**
- * Theme Toggle Functionality
+ * Modern Theme Toggle System
  */
 function initThemeToggle() {
     const themeToggle = document.getElementById('theme-toggle');
     const themeIcon = document.getElementById('theme-icon');
     const html = document.documentElement;
     
-    // Get current theme
-    let currentTheme = getCookie('theme') || 'light';
+    if (!themeToggle) return;
+    
+    // Get current theme from localStorage
+    let currentTheme = localStorage.getItem('theme') || 'light';
     
     // Set initial theme
-    html.setAttribute('data-theme', currentTheme);
-    updateThemeIcon(currentTheme);
+    setTheme(currentTheme);
     
     // Theme toggle click event
     themeToggle.addEventListener('click', function() {
         currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+        setTheme(currentTheme);
         
-        // Apply theme with smooth transition
-        html.style.transition = 'all 0.3s ease';
-        html.setAttribute('data-theme', currentTheme);
-        
-        // Update icon
-        updateThemeIcon(currentTheme);
-        
-        // Save preference
-        setCookie('theme', currentTheme, 365);
-        
-        // Remove transition after animation
+        // Add click animation
+        themeToggle.style.transform = 'scale(0.95)';
         setTimeout(() => {
-            html.style.transition = '';
-        }, 300);
-        
-        // Add pulse animation to button
-        themeToggle.classList.add('animate-pulse');
-        setTimeout(() => {
-            themeToggle.classList.remove('animate-pulse');
-        }, 1000);
+            themeToggle.style.transform = '';
+        }, 150);
     });
 }
 
 /**
- * Update theme icon based on current theme
+ * Set theme and update UI
  */
-function updateThemeIcon(theme) {
+function setTheme(theme) {
+    const html = document.documentElement;
     const themeIcon = document.getElementById('theme-icon');
-    if (theme === 'light') {
-        themeIcon.className = 'fas fa-moon';
+    
+    // Update HTML class
+    if (theme === 'dark') {
+        html.classList.add('dark');
     } else {
-        themeIcon.className = 'fas fa-sun';
+        html.classList.remove('dark');
     }
+    
+    // Update icon
+    if (themeIcon) {
+        themeIcon.className = theme === 'light' ? 'fas fa-moon w-5 h-5' : 'fas fa-sun w-5 h-5';
+    }
+    
+    // Save to localStorage
+    localStorage.setItem('theme', theme);
 }
 
 /**
@@ -74,7 +71,8 @@ function updateThemeIcon(theme) {
 function initMobileMenu() {
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
-    const mobileIcon = mobileMenuButton.querySelector('i');
+    
+    if (!mobileMenuButton || !mobileMenu) return;
     
     let isMenuOpen = false;
     
@@ -82,13 +80,18 @@ function initMobileMenu() {
         isMenuOpen = !isMenuOpen;
         
         if (isMenuOpen) {
-            mobileMenu.classList.remove('hidden');
-            mobileMenu.classList.add('animate-fadeInUp');
-            mobileIcon.className = 'fas fa-times text-xl';
+            mobileMenu.style.display = 'block';
+            // Trigger animation after display change
+            setTimeout(() => {
+                mobileMenu.style.opacity = '1';
+                mobileMenu.style.transform = 'translateY(0)';
+            }, 10);
         } else {
-            mobileMenu.classList.add('hidden');
-            mobileMenu.classList.remove('animate-fadeInUp');
-            mobileIcon.className = 'fas fa-bars text-xl';
+            mobileMenu.style.opacity = '0';
+            mobileMenu.style.transform = 'translateY(-10px)';
+            setTimeout(() => {
+                mobileMenu.style.display = 'none';
+            }, 200);
         }
     });
     
@@ -96,13 +99,20 @@ function initMobileMenu() {
     document.addEventListener('click', function(event) {
         if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
             if (isMenuOpen) {
-                mobileMenu.classList.add('hidden');
-                mobileMenu.classList.remove('animate-fadeInUp');
-                mobileIcon.className = 'fas fa-bars text-xl';
+                mobileMenu.style.opacity = '0';
+                mobileMenu.style.transform = 'translateY(-10px)';
+                setTimeout(() => {
+                    mobileMenu.style.display = 'none';
+                }, 200);
                 isMenuOpen = false;
             }
         }
     });
+    
+    // Initial mobile menu styles
+    mobileMenu.style.opacity = '0';
+    mobileMenu.style.transform = 'translateY(-10px)';
+    mobileMenu.style.transition = 'all 0.2s ease';
 }
 
 /**

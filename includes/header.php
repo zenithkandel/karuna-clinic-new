@@ -1,7 +1,7 @@
 <?php
 /**
  * Header Template
- * Karuna Swasthya Clinic - Common Header
+ * Karuna Swasthya Clinic - Modern & Clean Header
  */
 
 // Include configuration files
@@ -9,10 +9,9 @@ require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/functions.php';
 
 $currentPage = getCurrentPage();
-$currentTheme = getTheme();
 ?>
 <!DOCTYPE html>
-<html lang="en" data-theme="<?php echo $currentTheme; ?>">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,78 +29,110 @@ $currentTheme = getTheme();
     <link rel="stylesheet" href="<?php echo SITE_URL; ?>CSS/style.css">
     
     <!-- Tailwind CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        // Prevent flash of unstyled content - Set theme immediately
+        (function() {
+            const theme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+            }
+        })();
+    </script>
 </head>
-<body>
-    <!-- Theme Toggle Button (Fixed) -->
-    <button id="theme-toggle" class="fixed top-4 right-4 z-50 p-3 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition-all duration-300">
-        <i class="fas fa-moon" id="theme-icon"></i>
-    </button>
-
+<body class="font-inter bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-all duration-300">
+    
     <!-- Navigation -->
-    <nav class="nav-bar shadow-md fixed w-full top-0 z-40 transition-all duration-300" style="background-color: var(--bg-primary); border-bottom: 1px solid var(--border-color);">
-        <div class="container mx-auto px-6 py-3">
-            <div class="flex items-center justify-between">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
                 <!-- Logo -->
                 <div class="flex items-center">
-                    <a href="<?php echo SITE_URL; ?>" class="flex items-center">
-                        <img src="<?php echo SITE_URL; ?>assets/images/logo.png" alt="<?php echo SITE_NAME; ?>" class="h-12 w-auto">
-                        <span class="ml-3 text-xl font-bold text-gray-800 dark:text-white"><?php echo SITE_NAME; ?></span>
+                    <a href="<?php echo SITE_URL; ?>" class="flex items-center group">
+                        <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg group-hover:shadow-xl transition-all duration-300">
+                            K
+                        </div>
+                        <div class="ml-3">
+                            <span class="text-xl font-bold text-gray-900 dark:text-white block leading-tight">Karuna</span>
+                            <span class="text-xs text-gray-500 dark:text-gray-400 hidden sm:block">Swasthya Clinic</span>
+                        </div>
                     </a>
                 </div>
 
                 <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="<?php echo SITE_URL; ?>" class="nav-link <?php echo isActive('index'); ?>" style="color: var(--text-secondary);">
-                        <i class="fas fa-home mr-2"></i>Home
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="<?php echo SITE_URL; ?>" class="nav-link <?php echo isActive('index'); ?>">
+                        <i class="fas fa-home mr-2"></i>
+                        Home
                     </a>
-                    <a href="<?php echo SITE_URL; ?>pages/about.php" class="nav-link <?php echo isActive('about'); ?>" style="color: var(--text-secondary);">
-                        <i class="fas fa-info-circle mr-2"></i>About
+                    <a href="<?php echo SITE_URL; ?>pages/about.php" class="nav-link <?php echo isActive('about'); ?>">
+                        <i class="fas fa-info-circle mr-2"></i>
+                        About
                     </a>
-                    <a href="<?php echo SITE_URL; ?>pages/services.php" class="nav-link <?php echo isActive('services'); ?>" style="color: var(--text-secondary);">
-                        <i class="fas fa-stethoscope mr-2"></i>Services
+                    <a href="<?php echo SITE_URL; ?>pages/services.php" class="nav-link <?php echo isActive('services'); ?>">
+                        <i class="fas fa-stethoscope mr-2"></i>
+                        Services
                     </a>
-                    <a href="<?php echo SITE_URL; ?>pages/doctors.php" class="nav-link <?php echo isActive('doctors'); ?>" style="color: var(--text-secondary);">
-                        <i class="fas fa-user-md mr-2"></i>Doctors
+                    <a href="<?php echo SITE_URL; ?>pages/doctors.php" class="nav-link <?php echo isActive('doctors'); ?>">
+                        <i class="fas fa-user-md mr-2"></i>
+                        Doctors
                     </a>
-                    <a href="<?php echo SITE_URL; ?>pages/contact.php" class="btn-primary">
-                        <i class="fas fa-phone mr-2"></i>Contact
+                    <a href="<?php echo SITE_URL; ?>pages/contact.php" class="btn-primary ml-4">
+                        <i class="fas fa-phone mr-2"></i>
+                        Contact
                     </a>
                 </div>
 
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-gray-700 dark:text-gray-300 focus:outline-none">
-                        <i class="fas fa-bars text-xl"></i>
+                <!-- Right Side Controls -->
+                <div class="flex items-center space-x-4">
+                    <!-- Theme Toggle -->
+                    <button id="theme-toggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200" aria-label="Toggle theme">
+                        <i id="theme-icon" class="fas fa-moon w-5 h-5"></i>
+                    </button>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-button" class="lg:hidden p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200" aria-label="Toggle menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
                     </button>
                 </div>
             </div>
+        </div>
 
-            <!-- Mobile Navigation -->
-            <div id="mobile-menu" class="md:hidden mt-4 pb-4 hidden">
-                <a href="<?php echo SITE_URL; ?>" class="block py-2 px-4 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800 transition-colors duration-300">
-                    <i class="fas fa-home mr-2"></i>Home
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="lg:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 shadow-lg" style="display: none;">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a href="<?php echo SITE_URL; ?>" class="mobile-nav-link <?php echo isActive('index'); ?>">
+                    <i class="fas fa-home mr-3 w-5"></i>
+                    Home
                 </a>
-                <a href="<?php echo SITE_URL; ?>pages/about.php" class="block py-2 px-4 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800 transition-colors duration-300">
-                    <i class="fas fa-info-circle mr-2"></i>About
+                <a href="<?php echo SITE_URL; ?>pages/about.php" class="mobile-nav-link <?php echo isActive('about'); ?>">
+                    <i class="fas fa-info-circle mr-3 w-5"></i>
+                    About
                 </a>
-                <a href="<?php echo SITE_URL; ?>pages/services.php" class="block py-2 px-4 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800 transition-colors duration-300">
-                    <i class="fas fa-stethoscope mr-2"></i>Services
+                <a href="<?php echo SITE_URL; ?>pages/services.php" class="mobile-nav-link <?php echo isActive('services'); ?>">
+                    <i class="fas fa-stethoscope mr-3 w-5"></i>
+                    Services
                 </a>
-                <a href="<?php echo SITE_URL; ?>pages/doctors.php" class="block py-2 px-4 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800 transition-colors duration-300">
-                    <i class="fas fa-user-md mr-2"></i>Doctors
+                <a href="<?php echo SITE_URL; ?>pages/doctors.php" class="mobile-nav-link <?php echo isActive('doctors'); ?>">
+                    <i class="fas fa-user-md mr-3 w-5"></i>
+                    Doctors
                 </a>
-                <a href="<?php echo SITE_URL; ?>pages/contact.php" class="block py-2 px-4 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800 transition-colors duration-300">
-                    <i class="fas fa-phone mr-2"></i>Contact
+                <a href="<?php echo SITE_URL; ?>pages/contact.php" class="mobile-nav-link-primary">
+                    <i class="fas fa-phone mr-3 w-5"></i>
+                    Contact Us
                 </a>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content (with top margin for fixed nav) -->
-    <main class="pt-20 page-transition">
+    <!-- Main Content -->
+    <main class="pt-16">
