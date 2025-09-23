@@ -15,23 +15,18 @@ $stats = $db->getStats();
 ?>
 
 <!-- Services Hero Section -->
-<section class="py-20 bg-gradient-to-br from-blue-600 to-blue-800 text-white">
-    <div class="container mx-auto px-6">
-        <div class="text-center animate-fadeInUp">
-            <h1 class="text-4xl lg:text-5xl font-bold mb-6">
-                <i class="fas fa-stethoscope mr-3"></i>
-                Our Medical Services
-            </h1>
-            <p class="text-xl text-blue-100 max-w-3xl mx-auto mb-8">
-                Comprehensive healthcare services with modern facilities and experienced medical professionals dedicated to your well-being.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="../pages/contact.php" class="btn-primary bg-white text-blue-600 hover:bg-gray-100">
-                    <i class="fas fa-calendar-plus mr-2"></i>
+<section class="hero hero--blue" id="services-hero">
+    <div class="container">
+        <div class="hero-content center">
+            <h1 class="hero-title"><i class="fas fa-stethoscope"></i> Our Medical Services</h1>
+            <p class="hero-subtitle max-width-medium">Comprehensive healthcare services with modern facilities and experienced medical professionals dedicated to your well-being.</p>
+            <div class="hero-actions">
+                <a href="../pages/contact.php" class="btn btn-white">
+                    <i class="fas fa-calendar-plus"></i>
                     Book Appointment
                 </a>
-                <a href="../pages/contact.php" class="btn-secondary border-white text-white hover:bg-white hover:text-blue-600">
-                    <i class="fas fa-phone mr-2"></i>
+                <a href="../pages/contact.php" class="btn btn-outline-white">
+                    <i class="fas fa-phone"></i>
                     Call Now
                 </a>
             </div>
@@ -40,159 +35,103 @@ $stats = $db->getStats();
 </section>
 
 <!-- Services Overview -->
-<section class="py-20">
-    <div class="container mx-auto px-6">
-        <div class="text-center mb-16 animate-on-scroll">
-            <h2 class="text-4xl font-bold mb-6 text-gray-800 dark:text-white">
-                Why Choose Our Services?
-            </h2>
-            <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                We provide quality healthcare services with a patient-centered approach, modern equipment, and affordable pricing.
-            </p>
+<section class="section" id="services-overview">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Why Choose Our Services?</h2>
+            <p class="section-subtitle">We provide quality healthcare services with a patient-centered approach, modern equipment, and affordable pricing.</p>
         </div>
-        
-        <div class="grid md:grid-cols-3 gap-8 mb-16">
-            <div class="text-center animate-on-scroll">
-                <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <i class="fas fa-user-md text-2xl text-blue-600 dark:text-blue-400"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-4 text-gray-800 dark:text-white">Expert Doctors</h3>
-                <p class="text-gray-600 dark:text-gray-300">
-                    Experienced and qualified medical professionals with years of expertise in their respective fields.
-                </p>
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon-circle bg-blue"><i class="fas fa-user-md"></i></div>
+                <h3 class="feature-title">Expert Doctors</h3>
+                <p class="feature-text">Experienced and qualified medical professionals with years of expertise in their respective fields.</p>
             </div>
-            
-            <div class="text-center animate-on-scroll">
-                <div class="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <i class="fas fa-microscope text-2xl text-green-600 dark:text-green-400"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-4 text-gray-800 dark:text-white">Modern Equipment</h3>
-                <p class="text-gray-600 dark:text-gray-300">
-                    State-of-the-art medical equipment and diagnostic tools for accurate diagnosis and effective treatment.
-                </p>
+            <div class="feature-item">
+                <div class="feature-icon-circle bg-green"><i class="fas fa-microscope"></i></div>
+                <h3 class="feature-title">Modern Equipment</h3>
+                <p class="feature-text">State-of-the-art medical equipment and diagnostic tools for accurate diagnosis and effective treatment.</p>
             </div>
-            
-            <div class="text-center animate-on-scroll">
-                <div class="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <i class="fas fa-heart text-2xl text-purple-600 dark:text-purple-400"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-4 text-gray-800 dark:text-white">Compassionate Care</h3>
-                <p class="text-gray-600 dark:text-gray-300">
-                    Patient-centered care with empathy, respect, and dedication to improving your health and well-being.
-                </p>
+            <div class="feature-item">
+                <div class="feature-icon-circle bg-purple"><i class="fas fa-heart"></i></div>
+                <h3 class="feature-title">Compassionate Care</h3>
+                <p class="feature-text">Patient-centered care with empathy, respect, and dedication to improving your health and well-being.</p>
             </div>
         </div>
     </div>
 </section>
 
 <!-- Services Grid -->
-<section class="py-20 bg-gray-50 dark:bg-gray-800">
-    <div class="container mx-auto px-6">
-        <div class="text-center mb-16 animate-on-scroll">
-            <h2 class="text-4xl font-bold mb-6 text-gray-800 dark:text-white">
-                <i class="fas fa-hospital mr-3"></i>
-                Medical Services We Offer
-            </h2>
-            <p class="text-xl text-gray-600 dark:text-gray-300">
-                Comprehensive healthcare services to meet all your medical needs
-            </p>
+<section class="section section-alt" id="services-list">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title"><i class="fas fa-hospital"></i> Medical Services We Offer</h2>
+            <p class="section-subtitle">Comprehensive healthcare services to meet all your medical needs</p>
         </div>
-        
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="services-grid large">
             <?php foreach ($services as $service): ?>
-            <div class="service-card animate-on-scroll">
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center mx-auto mb-6 shadow-lg">
-                        <i class="<?php echo htmlspecialchars($service['icon']); ?> text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4 text-gray-800 dark:text-white">
-                        <?php echo htmlspecialchars($service['name']); ?>
-                    </h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                        <?php echo htmlspecialchars($service['description']); ?>
-                    </p>
-                    <div class="space-y-3">
-                        <a href="../pages/contact.php" class="btn-primary w-full justify-center">
-                            <i class="fas fa-calendar-plus mr-2"></i>
-                            Book Appointment
-                        </a>
-                        <button class="btn-secondary w-full justify-center" onclick="showServiceDetails('<?php echo addslashes($service['name']); ?>', '<?php echo addslashes($service['description']); ?>')">
-                            <i class="fas fa-info-circle mr-2"></i>
-                            Learn More
-                        </button>
-                    </div>
+            <div class="service-card service-card-large">
+                <div class="service-icon-circle gradient-blue">
+                    <i class="<?php echo htmlspecialchars($service['icon']); ?>"></i>
+                </div>
+                <h3 class="card-title"><?php echo htmlspecialchars($service['name']); ?></h3>
+                <p class="card-content"><?php echo htmlspecialchars($service['description']); ?></p>
+                <div class="card-actions vertical">
+                    <a href="../pages/contact.php" class="btn btn-primary full">
+                        <i class="fas fa-calendar-plus"></i>
+                        Book Appointment
+                    </a>
+                    <button class="btn btn-outline full" onclick="showServiceDetails('<?php echo addslashes($service['name']); ?>', '<?php echo addslashes($service['description']); ?>')">
+                        <i class="fas fa-info-circle"></i>
+                        Learn More
+                    </button>
                 </div>
             </div>
             <?php endforeach; ?>
         </div>
-        
         <?php if (empty($services)): ?>
-        <div class="text-center py-12 animate-on-scroll">
-            <i class="fas fa-exclamation-circle text-6xl text-gray-400 dark:text-gray-600 mb-6"></i>
-            <h3 class="text-2xl font-bold text-gray-600 dark:text-gray-400 mb-4">No Services Available</h3>
-            <p class="text-gray-500 dark:text-gray-500">
-                Please contact us for information about available medical services.
-            </p>
-            <a href="../pages/contact.php" class="btn-primary mt-6">
-                <i class="fas fa-phone mr-2"></i>
-                Contact Us
-            </a>
-        </div>
+            <div class="empty-state">
+                <div class="empty-icon"><i class="fas fa-exclamation-circle"></i></div>
+                <h3 class="empty-title">No Services Available</h3>
+                <p class="empty-text">Please contact us for information about available medical services.</p>
+                <a href="../pages/contact.php" class="btn btn-primary">
+                    <i class="fas fa-phone"></i>
+                    Contact Us
+                </a>
+            </div>
         <?php endif; ?>
     </div>
 </section>
 
 <!-- Service Statistics -->
-<section class="py-20">
-    <div class="container mx-auto px-6">
-        <div class="text-center mb-12 animate-on-scroll">
-            <h2 class="text-3xl font-bold mb-4 text-gray-800 dark:text-white">
-                Our Service Impact
-            </h2>
-            <p class="text-xl text-gray-600 dark:text-gray-300">
-                Numbers that reflect our commitment to quality healthcare
-            </p>
+<section class="section" id="service-impact">
+    <div class="container">
+        <div class="section-header small">
+            <h2 class="section-title">Our Service Impact</h2>
+            <p class="section-subtitle">Numbers that reflect our commitment to quality healthcare</p>
         </div>
-        
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div class="stats-card animate-on-scroll">
-                <div class="text-3xl font-bold text-blue-600 mb-2 counter" data-target="<?php echo $stats['services']; ?>">0</div>
-                <div class="text-gray-600 dark:text-gray-300 font-medium">Medical Services</div>
-            </div>
-            <div class="stats-card animate-on-scroll">
-                <div class="text-3xl font-bold text-green-600 mb-2 counter" data-target="<?php echo $stats['doctors']; ?>">0</div>
-                <div class="text-gray-600 dark:text-gray-300 font-medium">Expert Doctors</div>
-            </div>
-            <div class="stats-card animate-on-scroll">
-                <div class="text-3xl font-bold text-purple-600 mb-2 counter" data-target="<?php echo $stats['appointments']; ?>">0</div>
-                <div class="text-gray-600 dark:text-gray-300 font-medium">Appointments Served</div>
-            </div>
-            <div class="stats-card animate-on-scroll">
-                <div class="text-3xl font-bold text-orange-600 mb-2 counter" data-target="15">0</div>
-                <div class="text-gray-600 dark:text-gray-300 font-medium">Years Experience</div>
-            </div>
+        <div class="stats-grid">
+            <div class="stats-card"><div class="stats-number stats-blue counter" data-target="<?php echo $stats['services']; ?>">0</div><div class="stats-label">Medical Services</div></div>
+            <div class="stats-card"><div class="stats-number stats-green counter" data-target="<?php echo $stats['doctors']; ?>">0</div><div class="stats-label">Expert Doctors</div></div>
+            <div class="stats-card"><div class="stats-number stats-purple counter" data-target="<?php echo $stats['appointments']; ?>">0</div><div class="stats-label">Appointments Served</div></div>
+            <div class="stats-card"><div class="stats-number stats-orange counter" data-target="15">0</div><div class="stats-label">Years Experience</div></div>
         </div>
     </div>
 </section>
 
 <!-- Emergency Services -->
-<section class="py-20 bg-red-600 text-white">
-    <div class="container mx-auto px-6">
-        <div class="text-center animate-on-scroll">
-            <h2 class="text-4xl font-bold mb-6">
-                <i class="fas fa-ambulance mr-3"></i>
-                Emergency Services Available
-            </h2>
-            <p class="text-xl text-red-100 max-w-3xl mx-auto mb-8">
-                We provide 24/7 emergency consultation services. For urgent medical situations, contact us immediately.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="tel:+9779766597210" class="btn-primary bg-white text-red-600 hover:bg-gray-100 text-lg px-8 py-4">
-                    <i class="fas fa-phone mr-2"></i>
+<section class="cta-section cta-section--danger">
+    <div class="container">
+        <div class="cta-content">
+            <h2 class="cta-title"><i class="fas fa-ambulance"></i> Emergency Services Available</h2>
+            <p class="cta-subtitle">We provide 24/7 emergency consultation services. For urgent medical situations, contact us immediately.</p>
+            <div class="cta-buttons">
+                <a href="tel:+9779766597210" class="btn btn-white">
+                    <i class="fas fa-phone"></i>
                     Call Emergency: +977 976-659-7210
                 </a>
-                <a href="../pages/contact.php" class="btn-secondary border-white text-white hover:bg-white hover:text-red-600 text-lg px-8 py-4">
-                    <i class="fas fa-envelope mr-2"></i>
+                <a href="../pages/contact.php" class="btn btn-outline-white">
+                    <i class="fas fa-envelope"></i>
                     Send Message
                 </a>
             </div>
@@ -201,22 +140,18 @@ $stats = $db->getStats();
 </section>
 
 <!-- Call to Action -->
-<section class="py-20">
-    <div class="container mx-auto px-6">
-        <div class="text-center animate-on-scroll">
-            <h2 class="text-4xl font-bold mb-6 text-gray-800 dark:text-white">
-                Ready to Get Started?
-            </h2>
-            <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
-                Book your appointment today and experience quality healthcare services at Karuna Swasthya Clinic.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="../pages/contact.php" class="btn-primary text-lg px-8 py-4">
-                    <i class="fas fa-calendar-plus mr-2"></i>
+<section class="section" id="services-final-cta">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Ready to Get Started?</h2>
+            <p class="section-subtitle">Book your appointment today and experience quality healthcare services at Karuna Swasthya Clinic.</p>
+            <div class="hero-actions center">
+                <a href="../pages/contact.php" class="btn btn-primary">
+                    <i class="fas fa-calendar-plus"></i>
                     Book Appointment Now
                 </a>
-                <a href="../pages/about.php" class="btn-secondary text-lg px-8 py-4">
-                    <i class="fas fa-info-circle mr-2"></i>
+                <a href="../pages/about.php" class="btn btn-secondary">
+                    <i class="fas fa-info-circle"></i>
                     Learn More About Us
                 </a>
             </div>
@@ -225,23 +160,21 @@ $stats = $db->getStats();
 </section>
 
 <!-- Service Details Modal -->
-<div id="serviceModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4" style="display: none;">
-    <div class="bg-white dark:bg-gray-800 rounded-2xl max-w-md w-full p-6 shadow-2xl">
-        <div class="flex items-center justify-between mb-4">
-            <h3 id="modalTitle" class="text-2xl font-bold text-gray-800 dark:text-white"></h3>
-            <button onclick="closeServiceModal()" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-2xl">
-                <i class="fas fa-times"></i>
-            </button>
+<div id="serviceModal" class="modal-overlay" style="display:none;">
+    <div class="modal modal-sm">
+        <div class="modal-header">
+            <h3 id="modalTitle" class="modal-title"></h3>
+            <button onclick="closeServiceModal()" class="modal-close" aria-label="Close service details"><i class="fas fa-times"></i></button>
         </div>
-        <p id="modalDescription" class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed"></p>
-        <div class="flex gap-3">
-            <a href="../pages/contact.php" class="btn-primary flex-1 justify-center">
-                <i class="fas fa-calendar-plus mr-2"></i>
+        <div class="modal-body">
+            <p id="modalDescription" class="modal-text"></p>
+        </div>
+        <div class="modal-footer">
+            <a href="../pages/contact.php" class="btn btn-primary">
+                <i class="fas fa-calendar-plus"></i>
                 Book Now
             </a>
-            <button onclick="closeServiceModal()" class="btn-secondary flex-1 justify-center">
-                Close
-            </button>
+            <button onclick="closeServiceModal()" class="btn btn-outline">Close</button>
         </div>
     </div>
 </div>

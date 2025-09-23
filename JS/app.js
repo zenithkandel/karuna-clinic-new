@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initMobileMenu();
     initScrollAnimations();
     initSmoothScroll();
+    initBackToTop();
     
     console.log('🏥 Karuna Clinic website initialized successfully!');
 });
@@ -544,4 +545,24 @@ function hideTooltip() {
     if (tooltip) {
         tooltip.remove();
     }
+}
+
+/**
+ * Back To Top Button
+ */
+function initBackToTop() {
+    const btn = document.getElementById('back-to-top');
+    if (!btn) return;
+    const showOffset = 400;
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > showOffset) {
+            btn.classList.add('show');
+        } else {
+            btn.classList.remove('show');
+        }
+    });
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 }
