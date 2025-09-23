@@ -6,6 +6,19 @@
 
 $pageTitle = "Home";
 include_once 'includes/header.php';
+
+// Get dynamic content from database
+require_once 'includes/DatabaseHelper.php';
+$db = DatabaseHelper::getInstance();
+
+// Check if database is set up
+if (!$db->isDatabaseSetup()) {
+    echo '<div class="alert alert-warning">Database not set up. Please run the setup script.</div>';
+}
+
+$services = $db->getActiveServices();
+$doctors = $db->getActiveDoctors();
+$stats = $db->getStats();
 ?>
 
 <!-- Hero Section -->
@@ -69,41 +82,17 @@ include_once 'includes/header.php';
         </div>
         
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <!-- Service 1 -->
+            <?php foreach (array_slice($services, 0, 4) as $service): ?>
             <div class="service-card animate-on-scroll">
-                <i class="fas fa-user-nurse service-icon"></i>
-                <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">Medical Counselling</h3>
+                <i class="<?php echo htmlspecialchars($service['icon']); ?> service-icon"></i>
+                <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">
+                    <?php echo htmlspecialchars($service['name']); ?>
+                </h3>
                 <p class="text-gray-600 dark:text-gray-300">
-                    Professional medical consultation and health guidance from experienced doctors.
+                    <?php echo htmlspecialchars($service['description']); ?>
                 </p>
             </div>
-            
-            <!-- Service 2 -->
-            <div class="service-card animate-on-scroll">
-                <i class="fas fa-scalpel-line-dashed service-icon"></i>
-                <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">Minor Operations</h3>
-                <p class="text-gray-600 dark:text-gray-300">
-                    Safe and effective minor surgical procedures with modern medical equipment.
-                </p>
-            </div>
-            
-            <!-- Service 3 -->
-            <div class="service-card animate-on-scroll">
-                <i class="fas fa-droplet service-icon"></i>
-                <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">Blood Tests</h3>
-                <p class="text-gray-600 dark:text-gray-300">
-                    Comprehensive blood analysis and diagnostic testing with quick results.
-                </p>
-            </div>
-            
-            <!-- Service 4 -->
-            <div class="service-card animate-on-scroll">
-                <i class="fas fa-x-ray service-icon"></i>
-                <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">X-ray & Scans</h3>
-                <p class="text-gray-600 dark:text-gray-300">
-                    Advanced imaging services including X-rays and diagnostic scans.
-                </p>
-            </div>
+            <?php endforeach; ?>
         </div>
         
         <!-- Additional Services -->

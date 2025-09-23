@@ -4,7 +4,13 @@
  * Run this script to create the database and tables for Karuna Clinic
  */
 
-require_once 'config.php';
+require_once __DIR__ . '/config.php';
+
+// Define database constants for setup (before database.php includes them)
+define('DB_HOST', 'localhost');
+define('DB_USERNAME', 'root');
+define('DB_PASSWORD', '');
+define('DB_NAME', 'karuna_clinic');
 
 // Database connection without selecting a specific database
 function getBaseConnection() {
@@ -69,7 +75,7 @@ function setupDatabase() {
         echo "✓ Executed {$count} SQL statements\n";
         
         // Test the connection to the new database
-        require_once 'database.php';
+        require_once __DIR__ . '/database.php';
         $testPdo = getDBConnection();
         echo "✓ Successfully connected to karuna_clinic database\n";
         
