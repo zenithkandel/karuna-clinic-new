@@ -99,18 +99,34 @@ $stats = $db->getStats();
         <div class="mt-16 text-center animate-on-scroll">
             <h3 class="text-2xl font-bold mb-8 text-gray-800 dark:text-white">Specialized Care</h3>
             <div class="flex flex-wrap justify-center gap-4">
+                <?php foreach (array_slice($services, 4) as $service): ?>
                 <span class="px-6 py-3 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full">
-                    <i class="fas fa-heart-pulse mr-2"></i>Diabetes Care
+                    <i class="<?php echo htmlspecialchars($service['icon']); ?> mr-2"></i>
+                    <?php echo htmlspecialchars($service['name']); ?>
                 </span>
-                <span class="px-6 py-3 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full">
-                    <i class="fas fa-bone mr-2"></i>Orthopedic Treatment
-                </span>
-                <span class="px-6 py-3 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full">
-                    <i class="fas fa-dumbbell mr-2"></i>Physiotherapy
-                </span>
-                <span class="px-6 py-3 bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 rounded-full">
-                    <i class="fas fa-running mr-2"></i>Sports Medicine
-                </span>
+                <?php endforeach; ?>
+            </div>
+        </div>
+        
+        <!-- Statistics -->
+        <div class="mt-16 animate-on-scroll">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg">
+                    <div class="text-3xl font-bold text-blue-600 mb-2"><?php echo $stats['services']; ?></div>
+                    <div class="text-gray-600 dark:text-gray-300">Services</div>
+                </div>
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg">
+                    <div class="text-3xl font-bold text-green-600 mb-2"><?php echo $stats['doctors']; ?></div>
+                    <div class="text-gray-600 dark:text-gray-300">Expert Doctors</div>
+                </div>
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg">
+                    <div class="text-3xl font-bold text-purple-600 mb-2"><?php echo $stats['appointments']; ?></div>
+                    <div class="text-gray-600 dark:text-gray-300">Appointments</div>
+                </div>
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg">
+                    <div class="text-3xl font-bold text-orange-600 mb-2">24/7</div>
+                    <div class="text-gray-600 dark:text-gray-300">Emergency Care</div>
+                </div>
             </div>
         </div>
     </div>
