@@ -1378,20 +1378,26 @@ body.dark-theme .social-link::before { background: linear-gradient(135deg, var(-
     margin-bottom: var(--spacing-xl);
 }
 
-.feature-item {
+.feature-item.minimal {
     display: flex;
     align-items: center;
     margin-bottom: var(--spacing-md);
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    text-align: left;
 }
 
-.feature-icon {
+.feature-item.minimal .feature-icon {
     color: #10b981;
     font-size: 1.125rem;
     margin-right: var(--spacing-sm);
     flex-shrink: 0;
+    margin-bottom: 0;
 }
 
-.feature-text {
+.feature-item.minimal .feature-text {
     color: var(--text-secondary);
     font-size: 0.95rem;
 }
@@ -2154,6 +2160,34 @@ body.dark-theme .social-link::before { background: linear-gradient(135deg, var(-
 .btn-primary, .btn-secondary {
     position: relative;
     overflow: hidden;
+}
+
+/* Final button normalization to avoid duplicate earlier definitions causing inconsistencies */
+.btn,
+.btn-primary,
+.btn-secondary {
+    font-family: inherit;
+    line-height: 1.2;
+}
+
+.btn-primary {
+    background: var(--color-primary) !important;
+    color: #fff !important;
+}
+
+.btn-primary:hover {
+    background: var(--color-primary-dark) !important;
+}
+
+.btn-secondary {
+    background: transparent !important;
+    color: var(--color-primary) !important;
+    border: 2px solid var(--color-primary) !important;
+}
+
+.btn-secondary:hover {
+    background: var(--color-primary) !important;
+    color: #fff !important;
 }
 
 .btn-primary::before, .btn-secondary::before {
