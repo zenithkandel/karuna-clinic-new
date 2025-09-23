@@ -36,10 +36,11 @@ $currentPage = getCurrentPage();
     <script>
         // Prevent flash of unstyled content - Set theme immediately
         (function() {
-            const theme = localStorage.getItem('theme') || 'light';
-            document.documentElement.setAttribute('data-theme', theme);
+            const theme = localStorage.getItem('karuna-theme') || 'light';
             if (theme === 'dark') {
-                document.documentElement.classList.add('dark');
+                document.body.classList.add('dark-theme');
+            } else {
+                document.body.classList.add('light-theme');
             }
         })();
     </script>

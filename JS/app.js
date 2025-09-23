@@ -1,6 +1,6 @@
 /**
  * Karuna Swasthya Clinic - Modern JavaScript
- * Clean implementation with proper theme switching
+ * Complete functionality without Tailwind dependencies
  */
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -14,31 +14,36 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 /**
- * Modern Theme Toggle System
+ * Theme Toggle System
  */
 function initThemeToggle() {
     const themeToggle = document.getElementById('theme-toggle');
     const themeIcon = document.getElementById('theme-icon');
-    const html = document.documentElement;
     
-    if (!themeToggle) return;
+    if (!themeToggle) {
+        console.warn('Theme toggle button not found');
+        return;
+    }
     
     // Get current theme from localStorage
-    let currentTheme = localStorage.getItem('theme') || 'light';
+    let currentTheme = localStorage.getItem('karuna-theme') || 'light';
     
     // Set initial theme
     setTheme(currentTheme);
     
     // Theme toggle click event
-    themeToggle.addEventListener('click', function() {
+    themeToggle.addEventListener('click', function(e) {
+        e.preventDefault();
         currentTheme = currentTheme === 'light' ? 'dark' : 'light';
         setTheme(currentTheme);
         
         // Add click animation
-        themeToggle.style.transform = 'scale(0.95)';
+        themeToggle.style.transform = 'scale(0.9)';
         setTimeout(() => {
             themeToggle.style.transform = '';
         }, 150);
+        
+        console.log('Theme switched to:', currentTheme);
     });
 }
 
@@ -46,23 +51,35 @@ function initThemeToggle() {
  * Set theme and update UI
  */
 function setTheme(theme) {
-    const html = document.documentElement;
+    const body = document.body;
     const themeIcon = document.getElementById('theme-icon');
     
-    // Update HTML class
+    // Update body class
     if (theme === 'dark') {
-        html.classList.add('dark');
+        body.classList.add('dark-theme');
+        body.classList.remove('light-theme');
     } else {
-        html.classList.remove('dark');
+        body.classList.add('light-theme');
+        body.classList.remove('dark-theme');
     }
     
     // Update icon
     if (themeIcon) {
-        themeIcon.className = theme === 'light' ? 'fas fa-moon w-5 h-5' : 'fas fa-sun w-5 h-5';
+        if (theme === 'light') {
+            themeIcon.className = 'fas fa-moon';
+        } else {
+            themeIcon.className = 'fas fa-sun';
+        }
     }
     
     // Save to localStorage
-    localStorage.setItem('theme', theme);
+    localStorage.setItem('karuna-theme', theme);
+    
+    // Add smooth transition
+    document.body.style.transition = 'all 0.3s ease';
+    setTimeout(() => {
+        document.body.style.transition = '';
+    }, 300);
 }
 
 /**
@@ -72,47 +89,59 @@ function initMobileMenu() {
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     
-    if (!mobileMenuButton || !mobileMenu) return;
+    if (!mobileMenuButton || !mobileMenu) {
+        console.warn('Mobile menu elements not found');
+        return;
+    }
     
     let isMenuOpen = false;
     
-    mobileMenuButton.addEventListener('click', function() {
+    mobileMenuButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        toggleMobileMenu();
+    });
+    
+    function toggleMobileMenu() {
         isMenuOpen = !isMenuOpen;
         
         if (isMenuOpen) {
             mobileMenu.style.display = 'block';
-            // Trigger animation after display change
+            mobileMenuButton.classList.add('active');
             setTimeout(() => {
-                mobileMenu.style.opacity = '1';
-                mobileMenu.style.transform = 'translateY(0)';
+                mobileMenu.classList.add('show');
             }, 10);
         } else {
-            mobileMenu.style.opacity = '0';
-            mobileMenu.style.transform = 'translateY(-10px)';
+            mobileMenu.classList.remove('show');
+            mobileMenuButton.classList.remove('active');
             setTimeout(() => {
                 mobileMenu.style.display = 'none';
-            }, 200);
+            }, 300);
         }
-    });
+    }
     
     // Close menu when clicking outside
     document.addEventListener('click', function(event) {
         if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
             if (isMenuOpen) {
-                mobileMenu.style.opacity = '0';
-                mobileMenu.style.transform = 'translateY(-10px)';
+                mobileMenu.classList.remove('show');
+                mobileMenuButton.classList.remove('active');
                 setTimeout(() => {
                     mobileMenu.style.display = 'none';
-                }, 200);
+                }, 300);
                 isMenuOpen = false;
             }
         }
     });
     
-    // Initial mobile menu styles
-    mobileMenu.style.opacity = '0';
-    mobileMenu.style.transform = 'translateY(-10px)';
-    mobileMenu.style.transition = 'all 0.2s ease';
+    // Close menu on link click
+    const mobileNavLinks = mobileMenu.querySelectorAll('.mobile-nav-link');
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (isMenuOpen) {
+                toggleMobileMenu();
+            }
+        });
+    });
 }
 
 /**
