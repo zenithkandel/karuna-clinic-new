@@ -174,7 +174,7 @@ $stats = $db->getStats();
                         <div>
                             <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-2">
                                 <i class="fas fa-clock mr-2"></i>
-                                Experience: <?php echo $doctor['experience_years']; ?> years
+                                Experience: <?php echo isset($doctor['experience_years']) ? $doctor['experience_years'] : 'N/A'; ?> years
                             </div>
                             <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
                                 <i class="fas fa-envelope mr-2"></i>
