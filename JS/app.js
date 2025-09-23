@@ -196,7 +196,7 @@ function handleFormSubmit(form, successCallback, errorCallback) {
         submitButton.disabled = true;
         
         // Simulate API call (replace with actual endpoint)
-        fetch(form.action || 'process-form.php', {
+        fetch(form.action || '../process-form.php', {
             method: 'POST',
             body: formData,
             headers: {
