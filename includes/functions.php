@@ -4,13 +4,15 @@
  * Karuna Swasthya Clinic - Utility Functions
  */
 
+require_once __DIR__ . '/DatabaseHelper.php';
+
 /**
  * Sanitize input data
  */
 function sanitizeInput($data) {
     $data = trim($data);
     $data = stripslashes($data);
-    $data = htmlspecialchars($data);
+    $data = htmlspecialchars($data, ENT_QUOTES, 'UTF-8');
     return $data;
 }
 
@@ -84,5 +86,51 @@ function debug($data, $die = false) {
         echo '</pre>';
         if ($die) die();
     }
+}
+
+function getSiteSettingValue($key, $fallback = '') {
+    static $cache = null;
+
+    if ($cache === null) {
+        $db = DatabaseHelper::getInstance();
+        $cache = $db->getSettingsMap();
+    }
+
+    if (array_key_exists($key, $cache)) {
+        return $cache[$key];
+    }
+
+    return $fallback;
+}
+
+function setFlashMessage($type, $message) {
+    $_SESSION['flash'] = [
+        'type' => $type,
+        'message' => $message
+    ];
+}
+
+function getFlashMessage() {
+    if (!isset($_SESSION['flash'])) {
+        return null;
+    }
+
+    $flash = $_SESSION['flash'];
+    unset($_SESSION['flash']);
+    return $flash;
+}
+
+function isAdminLoggedIn() {
+    return !empty($_SESSION['admin_user']);
+}
+
+function requireAdminLogin() {
+    if (!isAdminLoggedIn()) {
+        redirect('../admin/login.php');
+    }
+}
+
+function getCurrentAdmin() {
+    return $_SESSION['admin_user'] ?? null;
 }
 ?>

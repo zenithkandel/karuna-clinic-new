@@ -1,136 +1,77 @@
 <?php
 /**
  * Header Template
- * Karuna Swasthya Clinic - Modern & Clean Header
+ * Shared top bar, navigation, and page shell.
  */
 
-// Include configuration files
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/functions.php';
 
 $currentPage = getCurrentPage();
+$clinicName = getSiteSettingValue('clinic_name', SITE_NAME);
+$clinicTagline = getSiteSettingValue('clinic_tagline', SITE_TAGLINE);
+$clinicPhone = getSiteSettingValue('clinic_phone', CLINIC_PHONE);
+$clinicTelephone = getSiteSettingValue('clinic_telephone', CLINIC_TELEPHONE);
+$clinicEmail = getSiteSettingValue('clinic_email', CLINIC_EMAIL);
+$clinicAddress = getSiteSettingValue('clinic_address', CLINIC_ADDRESS);
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="<?php echo SITE_NAME; ?> - <?php echo SITE_TAGLINE; ?>">
-    <meta name="keywords" content="healthcare, diabetes, clinic, orthopedic, physiotherapy, Pokhara">
-    <meta name="author" content="<?php echo SITE_NAME; ?>">
-    
-    <title><?php echo isset($pageTitle) ? $pageTitle . ' - ' . SITE_NAME : SITE_NAME; ?></title>
-    
-    <!-- Favicon -->
+    <meta name="description" content="<?php echo htmlspecialchars($clinicName); ?> - <?php echo htmlspecialchars($clinicTagline); ?>">
+    <meta name="keywords" content="clinic, diabetes center, healthcare, doctors, pokhara">
+    <meta name="author" content="<?php echo htmlspecialchars($clinicName); ?>">
+
+    <title><?php echo isset($pageTitle) ? htmlspecialchars($pageTitle) . ' | ' . htmlspecialchars($clinicName) : htmlspecialchars($clinicName); ?></title>
+
     <link rel="shortcut icon" href="<?php echo SITE_URL; ?>assets/images/favicon.ico" type="image/x-icon">
-    
-    <!-- CSS Files -->
     <link rel="stylesheet" href="<?php echo SITE_URL; ?>CSS/all.css">
     <link rel="stylesheet" href="<?php echo SITE_URL; ?>CSS/style.css">
-    
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <script>
-        // Prevent flash of unstyled content - Set theme immediately
-        (function() {
-            const theme = localStorage.getItem('karuna-theme') || 'light';
-            if (theme === 'dark') {
-                document.body.classList.add('dark-theme');
-            } else {
-                document.body.classList.add('light-theme');
-            }
-        })();
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-wrapper">
-                <!-- Logo -->
-                <div class="nav-logo">
-                    <a href="<?php echo SITE_URL; ?>" class="logo-link">
-                        <div class="logo-icon">
-                            K
-                        </div>
-                        <div class="logo-text">
-                            <span class="logo-title">Karuna</span>
-                            <span class="logo-subtitle">Swasthya Clinic</span>
-                        </div>
-                    </a>
+<div class="site-shell">
+    <header class="main-header">
+        <div class="top-contact-strip">
+            <div class="container split-row">
+                <div class="quick-contact">
+                    <a href="tel:<?php echo htmlspecialchars($clinicPhone); ?>"><i class="fas fa-phone-volume"></i> <?php echo htmlspecialchars($clinicPhone); ?></a>
+                    <a href="tel:<?php echo htmlspecialchars($clinicTelephone); ?>"><i class="fas fa-phone"></i> <?php echo htmlspecialchars($clinicTelephone); ?></a>
+                    <a href="mailto:<?php echo htmlspecialchars($clinicEmail); ?>"><i class="fas fa-envelope"></i> <?php echo htmlspecialchars($clinicEmail); ?></a>
                 </div>
-
-                <!-- Desktop Navigation -->
-                <div class="nav-menu">
-                    <a href="<?php echo SITE_URL; ?>" class="nav-link <?php echo isActive('index'); ?>">
-                        <i class="fas fa-home"></i>
-                        Home
-                    </a>
-                    <a href="<?php echo SITE_URL; ?>pages/about.php" class="nav-link <?php echo isActive('about'); ?>">
-                        <i class="fas fa-info-circle"></i>
-                        About
-                    </a>
-                    <a href="<?php echo SITE_URL; ?>pages/services.php" class="nav-link <?php echo isActive('services'); ?>">
-                        <i class="fas fa-stethoscope"></i>
-                        Services
-                    </a>
-                    <a href="<?php echo SITE_URL; ?>pages/doctors.php" class="nav-link <?php echo isActive('doctors'); ?>">
-                        <i class="fas fa-user-md"></i>
-                        Doctors
-                    </a>
-                    <a href="<?php echo SITE_URL; ?>pages/contact.php" class="btn-primary nav-contact">
-                        <i class="fas fa-phone"></i>
-                        Contact
-                    </a>
-                </div>
-
-                <!-- Right Side Controls -->
-                <div class="nav-controls">
-                    <!-- Theme Toggle -->
-                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-                        <i id="theme-icon" class="fas fa-moon"></i>
-                    </button>
-
-                    <!-- Mobile Menu Button -->
-                    <button id="mobile-menu-button" class="mobile-menu-button" aria-label="Toggle menu">
-                        <span class="hamburger-line"></span>
-                        <span class="hamburger-line"></span>
-                        <span class="hamburger-line"></span>
-                    </button>
-                </div>
+                <div class="quick-address"><i class="fas fa-location-dot"></i> <?php echo htmlspecialchars($clinicAddress); ?></div>
             </div>
         </div>
 
-        <!-- Mobile Navigation Menu -->
-        <div id="mobile-menu" class="mobile-menu">
-            <div class="mobile-menu-content">
-                <a href="<?php echo SITE_URL; ?>" class="mobile-nav-link <?php echo isActive('index'); ?>">
-                    <i class="fas fa-home"></i>
-                    Home
+        <div class="nav-wrap">
+            <div class="container nav-row">
+                <a href="<?php echo SITE_URL; ?>index.php" class="brand-lockup">
+                    <img src="<?php echo SITE_URL; ?>assets/images/logo.png" alt="<?php echo htmlspecialchars($clinicName); ?>">
+                    <span>
+                        <strong><?php echo htmlspecialchars($clinicName); ?></strong>
+                        <small><?php echo htmlspecialchars($clinicTagline); ?></small>
+                    </span>
                 </a>
-                <a href="<?php echo SITE_URL; ?>pages/about.php" class="mobile-nav-link <?php echo isActive('about'); ?>">
-                    <i class="fas fa-info-circle"></i>
-                    About
-                </a>
-                <a href="<?php echo SITE_URL; ?>pages/services.php" class="mobile-nav-link <?php echo isActive('services'); ?>">
-                    <i class="fas fa-stethoscope"></i>
-                    Services
-                </a>
-                <a href="<?php echo SITE_URL; ?>pages/doctors.php" class="mobile-nav-link <?php echo isActive('doctors'); ?>">
-                    <i class="fas fa-user-md"></i>
-                    Doctors
-                </a>
-                <a href="<?php echo SITE_URL; ?>pages/contact.php" class="mobile-nav-link mobile-nav-contact">
-                    <i class="fas fa-phone"></i>
-                    Contact Us
-                </a>
+
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <nav class="main-nav" id="main-nav">
+                    <a href="<?php echo SITE_URL; ?>index.php" class="<?php echo isActive('index') ? 'active' : ''; ?>"><i class="fas fa-house"></i> Home</a>
+                    <a href="<?php echo SITE_URL; ?>pages/about.php" class="<?php echo isActive('about') ? 'active' : ''; ?>"><i class="fas fa-circle-info"></i> About</a>
+                    <a href="<?php echo SITE_URL; ?>pages/services.php" class="<?php echo isActive('services') ? 'active' : ''; ?>"><i class="fas fa-stethoscope"></i> Services</a>
+                    <a href="<?php echo SITE_URL; ?>pages/doctors.php" class="<?php echo isActive('doctors') ? 'active' : ''; ?>"><i class="fas fa-user-doctor"></i> Doctors</a>
+                    <a href="<?php echo SITE_URL; ?>pages/contact.php" class="<?php echo isActive('contact') ? 'active' : ''; ?>"><i class="fas fa-address-book"></i> Contact</a>
+                </nav>
+
+                <a class="primary-action" href="<?php echo SITE_URL; ?>pages/contact.php#appointment-form"><i class="fas fa-calendar-check"></i> Appointment</a>
             </div>
         </div>
-    </nav>
+    </header>
 
-    <!-- Main Content -->
-    <main class="main-content">
+    <main>
