@@ -20,6 +20,7 @@
     --danger: #8b2f2f;
     --ok: #2d8b63;
     --container: 1240px;
+    --radius-soft: 6px;
     --shadow-soft: 0 20px 60px rgba(40, 44, 38, 0.08);
     --shadow-card: 0 10px 30px rgba(37, 33, 27, 0.08);
 }
@@ -129,6 +130,7 @@ img {
     object-fit: contain;
     border: 1px solid var(--line);
     background: #fff;
+    border-radius: var(--radius-soft);
 }
 
 .brand-lockup strong {
@@ -181,6 +183,7 @@ img {
     border: 1px solid #98703f;
     padding: 12px 18px;
     box-shadow: 0 8px 18px rgba(152, 112, 63, 0.2);
+    border-radius: var(--radius-soft);
 }
 
 .mobile-toggle {
@@ -190,6 +193,7 @@ img {
     border: 1px solid var(--line);
     background: #fff;
     color: var(--deep);
+    border-radius: var(--radius-soft);
 }
 
 .section {
@@ -236,6 +240,7 @@ img {
     box-shadow: var(--shadow-soft);
     color: #edf4ef;
     padding: 36px;
+    border-radius: var(--radius-soft);
 }
 
 .hero-kicker {
@@ -278,6 +283,7 @@ img {
     padding: 12px 18px;
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: var(--radius-soft);
 }
 
 .btn:hover {
@@ -322,6 +328,7 @@ img {
     border-left: 4px solid var(--accent);
     padding: 15px;
     box-shadow: var(--shadow-card);
+    border-radius: var(--radius-soft);
 }
 
 .notice-card h4 {
@@ -350,6 +357,7 @@ img {
     border: 1px solid #e6d9ca;
     padding: 20px;
     box-shadow: var(--shadow-card);
+    border-radius: var(--radius-soft);
 }
 
 .info-card i {
@@ -378,6 +386,7 @@ img {
     background-size: cover;
     background-position: center;
     border: 1px solid #e4d7c8;
+    border-radius: var(--radius-soft);
 }
 
 .story-panel {
@@ -385,6 +394,7 @@ img {
     background: #fff;
     box-shadow: var(--shadow-card);
     padding: 28px;
+    border-radius: var(--radius-soft);
 }
 
 .story-panel p {
@@ -428,6 +438,7 @@ img {
     color: #d6e2dc;
     text-align: center;
     padding: 16px;
+    border-radius: var(--radius-soft);
 }
 
 .stat strong {
@@ -449,6 +460,7 @@ img {
     background-size: cover;
     background-position: center;
     border: 1px solid #e5d8c9;
+    border-radius: var(--radius-soft);
 }
 
 .text-pane {
@@ -456,6 +468,7 @@ img {
     background: #fff;
     box-shadow: var(--shadow-card);
     padding: 28px;
+    border-radius: var(--radius-soft);
 }
 
 .text-pane p {
@@ -490,6 +503,8 @@ img {
     border: 1px solid #e5d8c9;
     background: #fff;
     box-shadow: var(--shadow-card);
+    border-radius: var(--radius-soft);
+    overflow: hidden;
 }
 
 .doctor-card img {
@@ -526,6 +541,7 @@ img {
     border: 1px solid #e8d2b3;
     box-shadow: 0 8px 18px rgba(125, 89, 36, 0.08);
     padding: 16px;
+    border-radius: var(--radius-soft);
 }
 
 .contact-card h4 {
@@ -586,6 +602,7 @@ img {
     background: #fff;
     box-shadow: var(--shadow-card);
     padding: 20px;
+    border-radius: var(--radius-soft);
 }
 
 .panel h2 {
@@ -612,6 +629,7 @@ img {
     border: 1px solid #d8cab8;
     background: #fff;
     padding: 10px 12px;
+    border-radius: var(--radius-soft);
 }
 
 .form-row textarea {
@@ -673,6 +691,7 @@ img {
     place-items: center;
     background: #2f423b;
     border: 1px solid #435c52;
+    border-radius: var(--radius-soft);
 }
 
 .copyright {
@@ -703,6 +722,8 @@ img {
     border: 1px solid #e3d8c8;
     box-shadow: 0 35px 60px rgba(0, 0, 0, 0.26);
     position: relative;
+    border-radius: var(--radius-soft);
+    overflow: hidden;
 }
 
 .notice-close {
@@ -714,6 +735,7 @@ img {
     border: 1px solid #decfbc;
     background: #fff;
     cursor: pointer;
+    border-radius: var(--radius-soft);
 }
 
 .notice-modal-media {
@@ -780,6 +802,7 @@ img {
     background: #fff;
     box-shadow: var(--shadow-card);
     padding: 14px;
+    border-radius: var(--radius-soft);
 }
 
 .data-table {

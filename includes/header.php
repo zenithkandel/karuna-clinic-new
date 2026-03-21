@@ -32,6 +32,7 @@ $clinicAddress = getSiteSettingValue('clinic_address', CLINIC_ADDRESS);
 
     <link rel="shortcut icon" href="<?php echo SITE_URL; ?>assets/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="<?php echo SITE_URL; ?>CSS/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="<?php echo SITE_URL; ?>CSS/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

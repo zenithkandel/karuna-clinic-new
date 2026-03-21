@@ -22,6 +22,12 @@ include __DIR__ . '/_layout_top.php';
 </section>
 
 <section class="panel">
+    <h2><i class="fas fa-table"></i> Database Management</h2>
+    <p style="margin-bottom: 12px; color: var(--ink-soft);">Use full CRUD tools for all base tables in one place.</p>
+    <a class="btn btn-accent" href="crud.php"><i class="fas fa-screwdriver-wrench"></i> Open Data CRUD</a>
+</section>
+
+<section class="panel">
     <h2><i class="fas fa-calendar-days"></i> Recent Appointments</h2>
     <table class="data-table">
         <thead>

@@ -244,6 +244,180 @@ class DatabaseHelper
         }
     }
 
+    private function sanitizeIdentifier($identifier)
+    {
+        if (!preg_match('/^[a-zA-Z0-9_]+$/', $identifier)) {
+            throw new InvalidArgumentException('Invalid identifier.');
+        }
+        return $identifier;
+    }
+
+    public function getCrudTables()
+    {
+        try {
+            $databaseName = DB_NAME;
+            $stmt = $this->pdo->prepare(
+                'SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_SCHEMA = ? AND TABLE_TYPE = "BASE TABLE" ORDER BY TABLE_NAME ASC'
+            );
+            $stmt->execute([$databaseName]);
+            return $stmt->fetchAll(PDO::FETCH_COLUMN);
+        } catch (PDOException $e) {
+            error_log('Error fetching CRUD tables: ' . $e->getMessage());
+            return [];
+        }
+    }
+
+    public function getTableColumns($table)
+    {
+        try {
+            $table = $this->sanitizeIdentifier($table);
+            $stmt = $this->pdo->query('DESCRIBE `' . $table . '`');
+            return $stmt->fetchAll();
+        } catch (Exception $e) {
+            error_log('Error fetching table columns: ' . $e->getMessage());
+            return [];
+        }
+    }
+
+    public function getTablePrimaryKey($table)
+    {
+        $columns = $this->getTableColumns($table);
+        foreach ($columns as $column) {
+            if (($column['Key'] ?? '') === 'PRI') {
+                return $column['Field'];
+            }
+        }
+        return null;
+    }
+
+    public function getTableRows($table, $limit = 200)
+    {
+        try {
+            $table = $this->sanitizeIdentifier($table);
+            $pk = $this->getTablePrimaryKey($table);
+            $order = $pk ? ' ORDER BY `' . $pk . '` DESC' : '';
+            $stmt = $this->pdo->prepare('SELECT * FROM `' . $table . '`' . $order . ' LIMIT ?');
+            $stmt->bindValue(1, (int) $limit, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (Exception $e) {
+            error_log('Error fetching table rows: ' . $e->getMessage());
+            return [];
+        }
+    }
+
+    public function getRowByPrimaryKey($table, $pkField, $pkValue)
+    {
+        try {
+            $table = $this->sanitizeIdentifier($table);
+            $pkField = $this->sanitizeIdentifier($pkField);
+            $stmt = $this->pdo->prepare('SELECT * FROM `' . $table . '` WHERE `' . $pkField . '` = ? LIMIT 1');
+            $stmt->execute([$pkValue]);
+            return $stmt->fetch();
+        } catch (Exception $e) {
+            error_log('Error fetching row by primary key: ' . $e->getMessage());
+            return null;
+        }
+    }
+
+    public function insertTableRow($table, $data, $columnsMeta)
+    {
+        try {
+            $table = $this->sanitizeIdentifier($table);
+            $fields = [];
+            $placeholders = [];
+            $values = [];
+
+            foreach ($columnsMeta as $columnMeta) {
+                $field = $columnMeta['Field'];
+                $extra = strtolower((string) ($columnMeta['Extra'] ?? ''));
+                if (strpos($extra, 'auto_increment') !== false) {
+                    continue;
+                }
+
+                if (!array_key_exists($field, $data)) {
+                    continue;
+                }
+
+                $value = $data[$field];
+                if ($table === 'admin_users' && $field === 'password_hash') {
+                    if ($value === '' || $value === null) {
+                        continue;
+                    }
+                    $value = password_hash($value, PASSWORD_DEFAULT);
+                }
+
+                $fields[] = '`' . $field . '`';
+                $placeholders[] = '?';
+                $values[] = ($value === '') ? null : $value;
+            }
+
+            if (empty($fields)) {
+                return false;
+            }
+
+            $sql = 'INSERT INTO `' . $table . '` (' . implode(', ', $fields) . ') VALUES (' . implode(', ', $placeholders) . ')';
+            $stmt = $this->pdo->prepare($sql);
+            return $stmt->execute($values);
+        } catch (Exception $e) {
+            error_log('Error inserting table row: ' . $e->getMessage());
+            return false;
+        }
+    }
+
+    public function updateTableRow($table, $pkField, $pkValue, $data, $columnsMeta)
+    {
+        try {
+            $table = $this->sanitizeIdentifier($table);
+            $pkField = $this->sanitizeIdentifier($pkField);
+            $updates = [];
+            $values = [];
+
+            foreach ($columnsMeta as $columnMeta) {
+                $field = $columnMeta['Field'];
+                if ($field === $pkField || !array_key_exists($field, $data)) {
+                    continue;
+                }
+
+                $value = $data[$field];
+                if ($table === 'admin_users' && $field === 'password_hash') {
+                    if ($value === '' || $value === null) {
+                        continue;
+                    }
+                    $value = password_hash($value, PASSWORD_DEFAULT);
+                }
+
+                $updates[] = '`' . $field . '` = ?';
+                $values[] = ($value === '') ? null : $value;
+            }
+
+            if (empty($updates)) {
+                return false;
+            }
+
+            $values[] = $pkValue;
+            $sql = 'UPDATE `' . $table . '` SET ' . implode(', ', $updates) . ' WHERE `' . $pkField . '` = ?';
+            $stmt = $this->pdo->prepare($sql);
+            return $stmt->execute($values);
+        } catch (Exception $e) {
+            error_log('Error updating table row: ' . $e->getMessage());
+            return false;
+        }
+    }
+
+    public function deleteTableRow($table, $pkField, $pkValue)
+    {
+        try {
+            $table = $this->sanitizeIdentifier($table);
+            $pkField = $this->sanitizeIdentifier($pkField);
+            $stmt = $this->pdo->prepare('DELETE FROM `' . $table . '` WHERE `' . $pkField . '` = ?');
+            return $stmt->execute([$pkValue]);
+        } catch (Exception $e) {
+            error_log('Error deleting table row: ' . $e->getMessage());
+            return false;
+        }
+    }
+
     public function authenticateAdmin($username, $password)
     {
         try {
