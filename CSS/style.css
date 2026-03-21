@@ -558,7 +558,7 @@ img {
         linear-gradient(0deg, rgba(182, 137, 82, 0.15), transparent 48%);
 }
 
-.page-banner > div {
+.page-banner>div {
     position: relative;
     z-index: 1;
     width: min(100% - 32px, 900px);
