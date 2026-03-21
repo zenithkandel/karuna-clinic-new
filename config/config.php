@@ -7,7 +7,16 @@
 // Site Configuration
 define('SITE_NAME', 'Karuna Swasthya Clinic');
 define('SITE_TAGLINE', 'Professional Healthcare & Diabetes Care');
-define('SITE_URL', 'http://localhost/codes/karuna-clinic/');
+
+// Dynamic base URL detection
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://';
+$host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+$scriptPath = dirname($_SERVER['SCRIPT_NAME'] ?? '');
+// Navigate to project root from wherever the script is loaded
+$rootPath = rtrim(str_replace('\\', '/', $scriptPath), '/');
+// Remove /admin, /pages, /includes, /config segments to get to project root
+$rootPath = preg_replace('#/(admin|pages|includes|config)$#', '', $rootPath);
+define('SITE_URL', $protocol . $host . $rootPath . '/');
 
 // Contact Information
 define('CLINIC_PHONE', '+977 9766597210');
