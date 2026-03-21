@@ -149,7 +149,7 @@ include __DIR__ . '/_layout_top.php';
                                     <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($csrf); ?>">
                                     <input type="hidden" name="action" value="delete">
                                     <input type="hidden" name="id" value="<?php echo (int) $user['id']; ?>">
-                                    <button class="btn" style="border:1px solid var(--line);" type="submit"><i
+                                    <button class="btn" style="border:1px solid var(--gray-300);" type="submit"><i
                                             class="fas fa-trash"></i> Delete</button>
                                 </form>
                             <?php endif; ?>

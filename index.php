@@ -85,7 +85,8 @@ $latestNotice = !empty($notices) ? $notices[0] : null;
                 <li><i class="fas fa-check"></i> Preventive guidance for long-term wellbeing</li>
                 <li><i class="fas fa-check"></i> Fast communication through phone and appointment desk</li>
             </ul>
-            <a class="btn btn-accent" href="<?php echo SITE_URL; ?>pages/about.php"><i class="fas fa-circle-info"></i> Explore Our Story</a>
+            <a class="btn btn-accent" href="<?php echo SITE_URL; ?>pages/about.php"><i class="fas fa-circle-info"></i>
+                Explore Our Story</a>
         </article>
     </div>
 </section>
@@ -96,9 +97,11 @@ $latestNotice = !empty($notices) ? $notices[0] : null;
             <article class="stat reveal"><strong><?php echo (int) $stats['services']; ?>+</strong><span>Active
                     Services</span></article>
             <article class="stat reveal">
-                <strong><?php echo (int) $stats['doctors']; ?>+</strong><span>Specialists</span></article>
+                <strong><?php echo (int) $stats['doctors']; ?>+</strong><span>Specialists</span>
+            </article>
             <article class="stat reveal">
-                <strong><?php echo (int) $stats['appointments']; ?>+</strong><span>Appointments</span></article>
+                <strong><?php echo (int) $stats['appointments']; ?>+</strong><span>Appointments</span>
+            </article>
             <article class="stat reveal"><strong>24/7</strong><span>Urgent Support</span></article>
         </div>
     </div>

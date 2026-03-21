@@ -27,7 +27,7 @@ $services = $db->getActiveServices();
                     <i class="<?php echo htmlspecialchars($service['icon']); ?>"></i>
                     <h3><?php echo htmlspecialchars($service['name']); ?></h3>
                     <p><?php echo htmlspecialchars($service['description']); ?></p>
-                    <a href="../pages/contact.php#appointment-form" style="color: var(--accent); font-weight: 800;">Request
+                    <a href="contact.php#appointment-form" style="color: var(--primary); font-weight: 600;">Request
                         Consultation <i class="fas fa-arrow-right"></i></a>
                 </article>
             <?php endforeach; ?>
@@ -49,7 +49,7 @@ $services = $db->getActiveServices();
                 <li><i class="fas fa-check"></i> Responsive communication with the clinic desk</li>
                 <li><i class="fas fa-check"></i> Patient-first appointment experience</li>
             </ul>
-            <a class="btn btn-accent" href="../pages/contact.php"><i class="fas fa-phone"></i> Talk to Clinic</a>
+            <a class="btn btn-accent" href="contact.php"><i class="fas fa-phone"></i> Talk to Clinic</a>
         </article>
     </div>
 </section>

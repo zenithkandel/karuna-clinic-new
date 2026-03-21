@@ -38,10 +38,10 @@ $doctors = $db->getActiveDoctors();
                         </p>
                         <p><?php echo htmlspecialchars($doctor['bio'] ?? ''); ?></p>
                         <div class="btn-row" style="margin-top: 10px;">
-                            <a class="btn btn-accent" href="../pages/contact.php#appointment-form"><i
+                            <a class="btn btn-accent" href="contact.php#appointment-form"><i
                                     class="fas fa-calendar-plus"></i> Book Consultation</a>
                             <?php if (!empty($doctor['phone'])): ?>
-                                <a class="btn" style="border: 1px solid var(--line);"
+                                <a class="btn btn-outline"
                                     href="tel:<?php echo htmlspecialchars($doctor['phone']); ?>"><i class="fas fa-phone"></i>
                                     Call</a>
                             <?php endif; ?>

@@ -29,7 +29,7 @@ $stats = $db->getStats();
                 <li><i class="fas fa-check"></i> Respectful care for all age groups and families</li>
                 <li><i class="fas fa-check"></i> Continuous follow-up for chronic and lifestyle conditions</li>
             </ul>
-            <a class="btn btn-accent" href="../pages/contact.php#appointment-form"><i class="fas fa-calendar-check"></i>
+            <a class="btn btn-accent" href="contact.php#appointment-form"><i class="fas fa-calendar-check"></i>
                 Schedule Visit</a>
         </article>
     </div>
