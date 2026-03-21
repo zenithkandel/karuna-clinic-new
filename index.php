@@ -7,6 +7,7 @@ $services = $db->getActiveServices();
 $doctors = $db->getActiveDoctors();
 $stats = $db->getStats();
 $notices = $db->getNotices(true, 6);
+$latestNotice = !empty($notices) ? $notices[0] : null;
 ?>
 
 <section class="hero" style="background-image:url('assets/images/hero-main.webp');">
@@ -146,5 +147,32 @@ $notices = $db->getNotices(true, 6);
         </div>
     </div>
 </section>
+
+<?php if ($latestNotice): ?>
+<div class="notice-modal" id="latest-notice-modal" data-notice-id="<?php echo (int) $latestNotice['id']; ?>">
+    <div class="notice-modal-card" role="dialog" aria-modal="true" aria-labelledby="latestNoticeTitle">
+        <button class="notice-close" type="button" aria-label="Close notice popup" data-notice-close>
+            <i class="fas fa-xmark"></i>
+        </button>
+        <?php if (!empty($latestNotice['image'])): ?>
+            <img class="notice-modal-media" src="<?php echo htmlspecialchars($latestNotice['image']); ?>" alt="Latest notice image">
+        <?php endif; ?>
+        <div class="notice-modal-body">
+            <h3 id="latestNoticeTitle"><i class="fas fa-bullhorn"></i> <?php echo htmlspecialchars($latestNotice['title']); ?></h3>
+            <p><?php echo htmlspecialchars($latestNotice['description']); ?></p>
+            <div class="notice-modal-actions">
+                <?php if (!empty($latestNotice['target_url'])): ?>
+                    <a class="btn btn-accent" href="<?php echo htmlspecialchars($latestNotice['target_url']); ?>" target="_blank" rel="noopener" data-notice-view>
+                        <i class="fas fa-arrow-up-right-from-square"></i> Open Notice
+                    </a>
+                <?php endif; ?>
+                <button class="btn btn-ghost" type="button" data-notice-close>
+                    <i class="fas fa-check"></i> Mark as Seen
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endif; ?>
 
 <?php include_once 'includes/footer.php'; ?>

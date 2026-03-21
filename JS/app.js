@@ -52,4 +52,82 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
         });
     });
+
+    initLatestNoticeModal();
 });
+
+function initLatestNoticeModal() {
+    var modal = document.getElementById('latest-notice-modal');
+    if (!modal) {
+        return;
+    }
+
+    var noticeId = modal.getAttribute('data-notice-id');
+    if (!noticeId) {
+        return;
+    }
+
+    var seenKey = 'karuna_latest_notice_seen';
+    var visitKey = 'karuna_has_visited';
+    var shouldOpen = false;
+
+    try {
+        var lastSeen = localStorage.getItem(seenKey);
+        var hasVisited = localStorage.getItem(visitKey) === '1';
+        shouldOpen = !hasVisited || lastSeen !== noticeId;
+    } catch (error) {
+        shouldOpen = true;
+    }
+
+    if (!shouldOpen) {
+        return;
+    }
+
+    openModal();
+
+    modal.querySelectorAll('[data-notice-close]').forEach(function (button) {
+        button.addEventListener('click', function () {
+            markSeen();
+            closeModal();
+        });
+    });
+
+    modal.querySelectorAll('[data-notice-view]').forEach(function (button) {
+        button.addEventListener('click', function () {
+            markSeen();
+        });
+    });
+
+    modal.addEventListener('click', function (event) {
+        if (event.target === modal) {
+            markSeen();
+            closeModal();
+        }
+    });
+
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && modal.classList.contains('open')) {
+            markSeen();
+            closeModal();
+        }
+    });
+
+    function markSeen() {
+        try {
+            localStorage.setItem(seenKey, noticeId);
+            localStorage.setItem(visitKey, '1');
+        } catch (error) {
+            // Ignore storage write errors.
+        }
+    }
+
+    function openModal() {
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+}
