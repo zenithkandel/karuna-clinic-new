@@ -66,6 +66,20 @@ CREATE TABLE IF NOT EXISTS contact_messages (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Notices table
+CREATE TABLE IF NOT EXISTS notices (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    target_url VARCHAR(500),
+    image VARCHAR(255),
+    is_active BOOLEAN DEFAULT TRUE,
+    created_by INT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    INDEX idx_notices_active_created (is_active, created_at)
+);
+
 -- Testimonials table
 CREATE TABLE IF NOT EXISTS testimonials (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -130,10 +144,15 @@ INSERT INTO site_settings (setting_key, setting_value, setting_type, description
 ('clinic_hours', 'Sun-Fri: 7:00 AM - 7:00 PM', 'text', 'Operating hours'),
 ('emergency_available', '24/7 Emergency Services', 'text', 'Emergency service availability'),
 ('about_text', 'We provide comprehensive healthcare services focusing on diabetes management, orthopedic problems, and general medical care. Our experienced team of medical professionals is dedicated to providing quality healthcare services at affordable prices.', 'textarea', 'About section content'),
+('message_forward_email', 'karunaswasthyaclinic@gmail.com', 'email', 'Target email to receive contact and appointment notifications'),
 ('facebook_url', '#', 'url', 'Facebook page URL'),
 ('twitter_url', '#', 'url', 'Twitter profile URL'),
 ('instagram_url', '#', 'url', 'Instagram profile URL'),
 ('linkedin_url', '#', 'url', 'LinkedIn profile URL');
+
+-- Insert default admin user (password: admin123)
+INSERT INTO admin_users (username, email, password_hash, full_name, role, is_active)
+VALUES ('admin', 'admin@karunaclinic.local', '$2y$12$u4HEUx2LBfVuJlItheHypuMX4Va9zmtPoAdyy3hW0b2HkMUTb1d7G', 'System Administrator', 'admin', TRUE);
 
 -- Create indexes for better performance
 CREATE INDEX idx_appointments_date ON appointments(appointment_date);
