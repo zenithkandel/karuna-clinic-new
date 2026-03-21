@@ -128,4 +128,16 @@ include __DIR__ . '/_layout_top.php';
                             <form method="post" onsubmit="return confirm('Delete this notice?');">
                                 <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($csrf); ?>">
                                 <input type="hidden" name="action" value="delete">
-                                <input type="hidden" name="id" value="<?php e
+                                <input type="hidden" name="id" value="<?php echo (int) $notice['id']; ?>">
+                                <button class="btn" style="border:1px solid var(--line);" type="submit"><i
+                                        class="fas fa-trash"></i> Delete</button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</section>
+
+<?php include __DIR__ . '/_layout_bottom.php';
