@@ -38,7 +38,8 @@ try {
 echo json_encode($response);
 exit;
 
-function processAppointment($db, $input) {
+function processAppointment($db, $input)
+{
     $required = ['patient_name', 'patient_phone', 'appointment_date', 'appointment_time'];
     foreach ($required as $field) {
         if (empty($input[$field])) {
@@ -46,7 +47,7 @@ function processAppointment($db, $input) {
         }
     }
 
-    $cleanPhone = preg_replace('/[^0-9+]/', '', (string)$input['patient_phone']);
+    $cleanPhone = preg_replace('/[^0-9+]/', '', (string) $input['patient_phone']);
     if (strlen($cleanPhone) < 10) {
         return ['success' => false, 'message' => 'Please enter a valid phone number.'];
     }
@@ -60,7 +61,7 @@ function processAppointment($db, $input) {
     }
 
     $payload = [
-        'doctor_id' => !empty($input['doctor_id']) ? (int)$input['doctor_id'] : null,
+        'doctor_id' => !empty($input['doctor_id']) ? (int) $input['doctor_id'] : null,
         'patient_name' => sanitizeInput($input['patient_name']),
         'patient_email' => !empty($input['patient_email']) ? sanitizeInput($input['patient_email']) : null,
         'patient_phone' => sanitizeInput($input['patient_phone']),
@@ -90,7 +91,8 @@ function processAppointment($db, $input) {
     return ['success' => true, 'message' => 'Appointment request submitted successfully.'];
 }
 
-function processContact($db, $input) {
+function processContact($db, $input)
+{
     $required = ['name', 'email', 'message'];
     foreach ($required as $field) {
         if (empty($input[$field])) {
@@ -102,7 +104,7 @@ function processContact($db, $input) {
         return ['success' => false, 'message' => 'Please enter a valid email address.'];
     }
 
-    if (strlen(trim((string)$input['message'])) < 10) {
+    if (strlen(trim((string) $input['message'])) < 10) {
         return ['success' => false, 'message' => 'Message should be at least 10 characters.'];
     }
 
@@ -132,7 +134,8 @@ function processContact($db, $input) {
     return ['success' => true, 'message' => 'Message sent successfully.'];
 }
 
-function sendNotificationEmail($to, $subject, $body) {
+function sendNotificationEmail($to, $subject, $body)
+{
     if (!filter_var($to, FILTER_VALIDATE_EMAIL)) {
         return false;
     }

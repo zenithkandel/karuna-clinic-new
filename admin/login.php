@@ -31,6 +31,7 @@ $csrf = generateCSRFToken();
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,28 +39,30 @@ $csrf = generateCSRFToken();
     <link rel="stylesheet" href="../CSS/all.css">
     <link rel="stylesheet" href="../CSS/style.css">
 </head>
+
 <body>
-<section class="section" style="min-height: 100vh; display:grid; place-items:center; padding: 24px;">
-    <article class="panel" style="max-width: 460px; width: 100%;">
-        <h2><i class="fas fa-user-shield"></i> Admin Login</h2>
-        <p>Use your admin credentials to access messages, notices, and settings.</p>
-        <?php if (!empty($error)): ?>
-        <div class="flash error"><?php echo htmlspecialchars($error); ?></div>
-        <?php endif; ?>
-        <form method="post">
-            <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($csrf); ?>">
-            <div class="form-row">
-                <label for="username">Username</label>
-                <input id="username" name="username" required>
-            </div>
-            <div class="form-row">
-                <label for="password">Password</label>
-                <input id="password" name="password" type="password" required>
-            </div>
-            <button class="btn btn-accent" type="submit"><i class="fas fa-right-to-bracket"></i> Login</button>
-        </form>
-        <p style="margin-top: 14px; color: var(--muted);">Default setup account: admin / admin123</p>
-    </article>
-</section>
+    <section class="section" style="min-height: 100vh; display:grid; place-items:center; padding: 24px;">
+        <article class="panel" style="max-width: 460px; width: 100%;">
+            <h2><i class="fas fa-user-shield"></i> Admin Login</h2>
+            <p>Use your admin credentials to access messages, notices, and settings.</p>
+            <?php if (!empty($error)): ?>
+                <div class="flash error"><?php echo htmlspecialchars($error); ?></div>
+            <?php endif; ?>
+            <form method="post">
+                <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($csrf); ?>">
+                <div class="form-row">
+                    <label for="username">Username</label>
+                    <input id="username" name="username" required>
+                </div>
+                <div class="form-row">
+                    <label for="password">Password</label>
+                    <input id="password" name="password" type="password" required>
+                </div>
+                <button class="btn btn-accent" type="submit"><i class="fas fa-right-to-bracket"></i> Login</button>
+            </form>
+            <p style="margin-top: 14px; color: var(--muted);">Default setup account: admin / admin123</p>
+        </article>
+    </section>
 </body>
+
 </html>
