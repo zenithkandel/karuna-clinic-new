@@ -17,17 +17,19 @@ $services = $db->getActiveServices();
     <div class="container">
         <div class="section-head">
             <h2><i class="fas fa-stethoscope"></i> What We Provide</h2>
-            <p>From diabetes management to diagnostics and rehabilitation, our service catalog is built for practical and accessible healthcare.</p>
+            <p>From diabetes management to diagnostics and rehabilitation, our service catalog is built for practical
+                and accessible healthcare.</p>
         </div>
 
         <div class="grid-cards">
             <?php foreach ($services as $service): ?>
-            <article class="info-card">
-                <i class="<?php echo htmlspecialchars($service['icon']); ?>"></i>
-                <h3><?php echo htmlspecialchars($service['name']); ?></h3>
-                <p><?php echo htmlspecialchars($service['description']); ?></p>
-                <a href="../pages/contact.php#appointment-form" style="color: var(--accent); font-weight:700;">Request Appointment <i class="fas fa-arrow-right"></i></a>
-            </article>
+                <article class="info-card">
+                    <i class="<?php echo htmlspecialchars($service['icon']); ?>"></i>
+                    <h3><?php echo htmlspecialchars($service['name']); ?></h3>
+                    <p><?php echo htmlspecialchars($service['description']); ?></p>
+                    <a href="../pages/contact.php#appointment-form" style="color: var(--accent); font-weight:700;">Request
+                        Appointment <i class="fas fa-arrow-right"></i></a>
+                </article>
             <?php endforeach; ?>
         </div>
     </div>

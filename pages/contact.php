@@ -20,15 +20,21 @@ $csrf = generateCSRFToken();
         <div class="contact-cards">
             <article class="contact-card">
                 <h4><i class="fas fa-phone-volume"></i> Priority Phone</h4>
-                <p><a href="tel:<?php echo htmlspecialchars(getSiteSettingValue('clinic_phone', CLINIC_PHONE)); ?>"><?php echo htmlspecialchars(getSiteSettingValue('clinic_phone', CLINIC_PHONE)); ?></a></p>
+                <p><a
+                        href="tel:<?php echo htmlspecialchars(getSiteSettingValue('clinic_phone', CLINIC_PHONE)); ?>"><?php echo htmlspecialchars(getSiteSettingValue('clinic_phone', CLINIC_PHONE)); ?></a>
+                </p>
             </article>
             <article class="contact-card">
                 <h4><i class="fas fa-phone"></i> Telephone</h4>
-                <p><a href="tel:<?php echo htmlspecialchars(getSiteSettingValue('clinic_telephone', CLINIC_TELEPHONE)); ?>"><?php echo htmlspecialchars(getSiteSettingValue('clinic_telephone', CLINIC_TELEPHONE)); ?></a></p>
+                <p><a
+                        href="tel:<?php echo htmlspecialchars(getSiteSettingValue('clinic_telephone', CLINIC_TELEPHONE)); ?>"><?php echo htmlspecialchars(getSiteSettingValue('clinic_telephone', CLINIC_TELEPHONE)); ?></a>
+                </p>
             </article>
             <article class="contact-card">
                 <h4><i class="fas fa-envelope"></i> Email</h4>
-                <p><a href="mailto:<?php echo htmlspecialchars(getSiteSettingValue('clinic_email', CLINIC_EMAIL)); ?>"><?php echo htmlspecialchars(getSiteSettingValue('clinic_email', CLINIC_EMAIL)); ?></a></p>
+                <p><a
+                        href="mailto:<?php echo htmlspecialchars(getSiteSettingValue('clinic_email', CLINIC_EMAIL)); ?>"><?php echo htmlspecialchars(getSiteSettingValue('clinic_email', CLINIC_EMAIL)); ?></a>
+                </p>
             </article>
             <article class="contact-card">
                 <h4><i class="fas fa-location-dot"></i> Clinic Address</h4>
@@ -61,7 +67,8 @@ $csrf = generateCSRFToken();
                 </div>
                 <div class="form-row">
                     <label for="appointment_date">Preferred Date</label>
-                    <input id="appointment_date" type="date" name="appointment_date" min="<?php echo date('Y-m-d'); ?>" required>
+                    <input id="appointment_date" type="date" name="appointment_date" min="<?php echo date('Y-m-d'); ?>"
+                        required>
                 </div>
                 <div class="form-row">
                     <label for="appointment_time">Preferred Time</label>
@@ -80,7 +87,9 @@ $csrf = generateCSRFToken();
                     <select id="doctor_id" name="doctor_id">
                         <option value="">Any Available</option>
                         <?php foreach ($doctors as $doctor): ?>
-                        <option value="<?php echo (int)$doctor['id']; ?>"><?php echo htmlspecialchars($doctor['name']); ?> - <?php echo htmlspecialchars($doctor['specialization']); ?></option>
+                            <option value="<?php echo (int) $doctor['id']; ?>">
+                                <?php echo htmlspecialchars($doctor['name']); ?> -
+                                <?php echo htmlspecialchars($doctor['specialization']); ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -89,7 +98,8 @@ $csrf = generateCSRFToken();
                     <select id="service_type" name="service_type">
                         <option value="">Select Service</option>
                         <?php foreach ($services as $service): ?>
-                        <option value="<?php echo htmlspecialchars($service['name']); ?>"><?php echo htmlspecialchars($service['name']); ?></option>
+                            <option value="<?php echo htmlspecialchars($service['name']); ?>">
+                                <?php echo htmlspecialchars($service['name']); ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -97,7 +107,8 @@ $csrf = generateCSRFToken();
                     <label for="appointment_message">Additional Note</label>
                     <textarea id="appointment_message" name="message" rows="4"></textarea>
                 </div>
-                <button class="btn btn-accent" type="submit"><i class="fas fa-paper-plane"></i> Submit Appointment</button>
+                <button class="btn btn-accent" type="submit"><i class="fas fa-paper-plane"></i> Submit
+                    Appointment</button>
             </form>
         </article>
 

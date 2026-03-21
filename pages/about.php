@@ -18,7 +18,8 @@ $stats = $db->getStats();
         <div class="image-pane" style="background-image:url('../assets/images/hero-main.webp');"></div>
         <div class="text-pane">
             <h2><i class="fas fa-bullseye"></i> Mission and Approach</h2>
-            <p>Karuna Swasthya Clinic and Diabetes Center delivers practical, quality healthcare services with patient-centered consultation and clear treatment plans.</p>
+            <p>Karuna Swasthya Clinic and Diabetes Center delivers practical, quality healthcare services with
+                patient-centered consultation and clear treatment plans.</p>
             <ul>
                 <li><i class="fas fa-check"></i> Diabetes-focused care and long-term management</li>
                 <li><i class="fas fa-check"></i> Orthopedic and trauma consultation support</li>
@@ -32,9 +33,10 @@ $stats = $db->getStats();
 <section class="stats-strip">
     <div class="container">
         <div class="stats-grid">
-            <div class="stat"><strong><?php echo (int)$stats['services']; ?>+</strong><span>Service Lines</span></div>
-            <div class="stat"><strong><?php echo (int)$stats['doctors']; ?>+</strong><span>Specialists</span></div>
-            <div class="stat"><strong><?php echo (int)$stats['appointments']; ?>+</strong><span>Appointments</span></div>
+            <div class="stat"><strong><?php echo (int) $stats['services']; ?>+</strong><span>Service Lines</span></div>
+            <div class="stat"><strong><?php echo (int) $stats['doctors']; ?>+</strong><span>Specialists</span></div>
+            <div class="stat"><strong><?php echo (int) $stats['appointments']; ?>+</strong><span>Appointments</span>
+            </div>
             <div class="stat"><strong>15+</strong><span>Years of Care</span></div>
         </div>
     </div>
@@ -45,7 +47,9 @@ $stats = $db->getStats();
         <div class="contact-cards">
             <article class="contact-card">
                 <h4><i class="fas fa-phone-volume"></i> Emergency Contact</h4>
-                <p><a href="tel:<?php echo htmlspecialchars(getSiteSettingValue('clinic_phone', CLINIC_PHONE)); ?>"><?php echo htmlspecialchars(getSiteSettingValue('clinic_phone', CLINIC_PHONE)); ?></a></p>
+                <p><a
+                        href="tel:<?php echo htmlspecialchars(getSiteSettingValue('clinic_phone', CLINIC_PHONE)); ?>"><?php echo htmlspecialchars(getSiteSettingValue('clinic_phone', CLINIC_PHONE)); ?></a>
+                </p>
             </article>
             <article class="contact-card">
                 <h4><i class="fas fa-clock"></i> Clinic Hours</h4>
