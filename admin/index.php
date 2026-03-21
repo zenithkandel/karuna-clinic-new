@@ -22,9 +22,15 @@ include __DIR__ . '/_layout_top.php';
 </section>
 
 <section class="panel">
-    <h2><i class="fas fa-table"></i> Database Management</h2>
-    <p style="margin-bottom: 12px; color: var(--ink-soft);">Use full CRUD tools for all base tables in one place.</p>
-    <a class="btn btn-accent" href="crud.php"><i class="fas fa-screwdriver-wrench"></i> Open Data CRUD</a>
+    <h2><i class="fas fa-compass"></i> Quick Management</h2>
+    <div class="btn-row">
+        <a class="btn btn-accent" href="services.php"><i class="fas fa-stethoscope"></i> Services</a>
+        <a class="btn btn-accent" href="doctors.php"><i class="fas fa-user-doctor"></i> Doctors</a>
+        <a class="btn btn-accent" href="appointments.php"><i class="fas fa-calendar-check"></i> Appointments</a>
+        <a class="btn btn-accent" href="messages.php"><i class="fas fa-inbox"></i> Messages</a>
+        <a class="btn btn-accent" href="notices.php"><i class="fas fa-bullhorn"></i> Notices</a>
+        <a class="btn btn-accent" href="testimonials.php"><i class="fas fa-star"></i> Testimonials</a>
+    </div>
 </section>
 
 <section class="panel">
