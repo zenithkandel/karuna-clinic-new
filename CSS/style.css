@@ -31,7 +31,11 @@ body {
     line-height: 1.55;
 }
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     line-height: 1.2;
@@ -76,7 +80,8 @@ img {
     padding: 10px 0;
 }
 
-.quick-contact a, .quick-address {
+.quick-contact a,
+.quick-address {
     display: inline-flex;
     align-items: center;
     gap: 8px;

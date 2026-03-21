@@ -9,7 +9,8 @@ require_once __DIR__ . '/DatabaseHelper.php';
 /**
  * Sanitize input data
  */
-function sanitizeInput($data) {
+function sanitizeInput($data)
+{
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data, ENT_QUOTES, 'UTF-8');
@@ -19,7 +20,8 @@ function sanitizeInput($data) {
 /**
  * Generate CSRF Token
  */
-function generateCSRFToken() {
+function generateCSRFToken()
+{
     if (!isset($_SESSION[CSRF_TOKEN_NAME])) {
         $_SESSION[CSRF_TOKEN_NAME] = bin2hex(random_bytes(32));
     }
@@ -29,14 +31,16 @@ function generateCSRFToken() {
 /**
  * Verify CSRF Token
  */
-function verifyCSRFToken($token) {
+function verifyCSRFToken($token)
+{
     return isset($_SESSION[CSRF_TOKEN_NAME]) && hash_equals($_SESSION[CSRF_TOKEN_NAME], $token);
 }
 
 /**
  * Redirect function
  */
-function redirect($url) {
+function redirect($url)
+{
     header("Location: " . $url);
     exit();
 }
@@ -44,51 +48,59 @@ function redirect($url) {
 /**
  * Get current page name
  */
-function getCurrentPage() {
+function getCurrentPage()
+{
     return basename($_SERVER['PHP_SELF'], '.php');
 }
 
 /**
  * Format phone number for display
  */
-function formatPhone($phone) {
+function formatPhone($phone)
+{
     return preg_replace('/(\+977)(\s*)(\d{10})/', '$1 $3', $phone);
 }
 
 /**
  * Get theme preference
  */
-function getTheme() {
+function getTheme()
+{
     return isset($_COOKIE['theme']) ? $_COOKIE['theme'] : DEFAULT_THEME;
 }
 
 /**
  * Set theme preference
  */
-function setTheme($theme) {
+function setTheme($theme)
+{
     setcookie('theme', $theme, time() + (365 * 24 * 60 * 60), '/'); // 1 year
 }
 
 /**
  * Check if current page is active (for navigation)
  */
-function isActive($page) {
+function isActive($page)
+{
     return getCurrentPage() === $page ? 'active' : '';
 }
 
 /**
  * Debug function (only works when DEBUG_MODE is true)
  */
-function debug($data, $die = false) {
+function debug($data, $die = false)
+{
     if (DEBUG_MODE) {
         echo '<pre>';
         var_dump($data);
         echo '</pre>';
-        if ($die) die();
+        if ($die)
+            die();
     }
 }
 
-function getSiteSettingValue($key, $fallback = '') {
+function getSiteSettingValue($key, $fallback = '')
+{
     static $cache = null;
 
     if ($cache === null) {
@@ -103,14 +115,16 @@ function getSiteSettingValue($key, $fallback = '') {
     return $fallback;
 }
 
-function setFlashMessage($type, $message) {
+function setFlashMessage($type, $message)
+{
     $_SESSION['flash'] = [
         'type' => $type,
         'message' => $message
     ];
 }
 
-function getFlashMessage() {
+function getFlashMessage()
+{
     if (!isset($_SESSION['flash'])) {
         return null;
     }
@@ -120,17 +134,20 @@ function getFlashMessage() {
     return $flash;
 }
 
-function isAdminLoggedIn() {
+function isAdminLoggedIn()
+{
     return !empty($_SESSION['admin_user']);
 }
 
-function requireAdminLogin() {
+function requireAdminLogin()
+{
     if (!isAdminLoggedIn()) {
         redirect('../admin/login.php');
     }
 }
 
-function getCurrentAdmin() {
+function getCurrentAdmin()
+{
     return $_SESSION['admin_user'] ?? null;
 }
 ?>
