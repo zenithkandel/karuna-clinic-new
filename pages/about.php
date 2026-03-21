@@ -41,7 +41,8 @@ $stats = $db->getStats();
             <article class="stat reveal"><strong><?php echo (int) $stats['services']; ?>+</strong><span>Service
                     Streams</span></article>
             <article class="stat reveal">
-                <strong><?php echo (int) $stats['doctors']; ?>+</strong><span>Consultants</span></article>
+                <strong><?php echo (int) $stats['doctors']; ?>+</strong><span>Consultants</span>
+            </article>
             <article class="stat reveal"><strong><?php echo (int) $stats['appointments']; ?>+</strong><span>Patient
                     Visits</span></article>
             <article class="stat reveal"><strong>15+</strong><span>Years in Practice</span></article>

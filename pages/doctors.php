@@ -41,8 +41,8 @@ $doctors = $db->getActiveDoctors();
                             <a class="btn btn-accent" href="contact.php#appointment-form"><i
                                     class="fas fa-calendar-plus"></i> Book Consultation</a>
                             <?php if (!empty($doctor['phone'])): ?>
-                                <a class="btn btn-outline"
-                                    href="tel:<?php echo htmlspecialchars($doctor['phone']); ?>"><i class="fas fa-phone"></i>
+                                <a class="btn btn-outline" href="tel:<?php echo htmlspecialchars($doctor['phone']); ?>"><i
+                                        class="fas fa-phone"></i>
                                     Call</a>
                             <?php endif; ?>
                         </div>

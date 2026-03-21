@@ -66,7 +66,7 @@ $csrf = generateCSRFToken();
                 </div>
                 <button class="btn btn-accent" type="submit"><i class="fas fa-right-to-bracket"></i> Login</button>
             </form>
-            <p style="margin-top: 14px; color: var(--muted);">Default setup account: admin / admin123</p>
+            <p style="margin-top: 14px; color: var(--gray-500);">Default setup account: admin / admin123</p>
         </article>
     </section>
 </body>
