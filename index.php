@@ -19,7 +19,7 @@ $latestNotice = !empty($notices) ? $notices[0] : null;
             <p>Professional diabetes and general healthcare support with a warm clinical experience designed for trust,
                 clarity, and continuity of care in Pokhara.</p>
             <div class="btn-row">
-                <a class="btn btn-accent" href="pages/contact.php#appointment-form"><i
+                <a class="btn btn-accent" href="<?php echo SITE_URL; ?>pages/contact.php#appointment-form"><i
                         class="fas fa-calendar-check"></i> Book Appointment</a>
                 <a class="btn btn-outline"
                     href="tel:<?php echo htmlspecialchars(getSiteSettingValue('clinic_phone', CLINIC_PHONE)); ?>"><i
@@ -85,7 +85,7 @@ $latestNotice = !empty($notices) ? $notices[0] : null;
                 <li><i class="fas fa-check"></i> Preventive guidance for long-term wellbeing</li>
                 <li><i class="fas fa-check"></i> Fast communication through phone and appointment desk</li>
             </ul>
-            <a class="btn btn-accent" href="pages/about.php"><i class="fas fa-circle-info"></i> Explore Our Story</a>
+            <a class="btn btn-accent" href="<?php echo SITE_URL; ?>pages/about.php"><i class="fas fa-circle-info"></i> Explore Our Story</a>
         </article>
     </div>
 </section>
@@ -120,7 +120,7 @@ $latestNotice = !empty($notices) ? $notices[0] : null;
                         <p class="doctor-meta"><?php echo htmlspecialchars($doctor['specialization']); ?></p>
                         <p><?php echo htmlspecialchars($doctor['bio']); ?></p>
                         <div class="btn-row" style="margin-top: 10px;">
-                            <a class="btn btn-accent" href="pages/contact.php#appointment-form"><i
+                            <a class="btn btn-accent" href="<?php echo SITE_URL; ?>pages/contact.php#appointment-form"><i
                                     class="fas fa-calendar-plus"></i> Consult</a>
                         </div>
                     </div>
