@@ -24,17 +24,19 @@ $doctors = $db->getActiveDoctors();
         <div class="doctor-grid">
             <?php foreach ($doctors as $doctor): ?>
                 <article class="doctor-card reveal">
-                    <img src="../assets/images/<?php echo htmlspecialchars($doctor['image']); ?>"
-                        alt="<?php echo htmlspecialchars($doctor['name']); ?>">
+                    <img src="../assets/images/<?php echo htmlspecialchars($doctor['image'] ?? 'logo.png'); ?>"
+                        alt="<?php echo htmlspecialchars($doctor['name'] ?? 'Doctor'); ?>">
                     <div class="doctor-body">
-                        <h3><?php echo htmlspecialchars($doctor['name']); ?></h3>
-                        <p class="doctor-meta"><?php echo htmlspecialchars($doctor['title']); ?> |
-                            <?php echo htmlspecialchars($doctor['specialization']); ?></p>
+                        <h3><?php echo htmlspecialchars($doctor['name'] ?? 'Doctor'); ?></h3>
+                        <p class="doctor-meta"><?php echo htmlspecialchars($doctor['title'] ?? 'Medical Specialist'); ?> |
+                            <?php echo htmlspecialchars($doctor['specialization'] ?? 'General Care'); ?>
+                        </p>
                         <p><strong><i class="fas fa-graduation-cap"></i> Qualification:</strong>
-                            <?php echo htmlspecialchars($doctor['qualification']); ?></p>
+                            <?php echo htmlspecialchars($doctor['qualification'] ?? 'Not available'); ?></p>
                         <p><strong><i class="fas fa-clock"></i> Experience:</strong>
-                            <?php echo (int) $doctor['experience_years']; ?> years</p>
-                        <p><?php echo htmlspecialchars($doctor['bio']); ?></p>
+                            <?php echo isset($doctor['experience_years']) ? (int) $doctor['experience_years'] . ' years' : 'Not specified'; ?>
+                        </p>
+                        <p><?php echo htmlspecialchars($doctor['bio'] ?? ''); ?></p>
                         <div class="btn-row" style="margin-top: 10px;">
                             <a class="btn btn-accent" href="../pages/contact.php#appointment-form"><i
                                     class="fas fa-calendar-plus"></i> Book Consultation</a>
