@@ -4,6 +4,8 @@ include_once '../includes/header.php';
 
 $db = DatabaseHelper::getInstance();
 $stats = $db->getStats();
+$doctors = $db->getActiveDoctors();
+
 ?>
 
 <section class="page-banner"
@@ -17,7 +19,7 @@ $stats = $db->getStats();
 <section class="section">
     <div class="container split-story">
         <div class="story-image reveal"
-            style="background-image:url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=1200&q=80');">
+            style="background-image:url('../assets/images/<?php echo htmlspecialchars($doctors[0]['image'] ?? 'logo.png'); ?>');">
         </div>
         <article class="story-panel reveal">
             <h2><i class="fas fa-bullseye"></i> Mission and Vision</h2>
